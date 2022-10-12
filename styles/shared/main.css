@@ -1,3 +1,173 @@
 /*===========================================================================================
-        Fonts
+        Globals
 =============================================================================================*/
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #02070D;
+  --darkgray: #071226;
+  --darkblue: #363E59;
+  --clr-primary: #A66A74;
+  --orange: #D99D8F;
+  --txt-primary: #FFFFFF;
+  --txt-default: #E2E2E2;
+
+  --content-padding: 8.75rem;
+}
+
+/*===========================================================================================
+        Font Definitions
+=============================================================================================*/
+h1, h2, h3, h4, h5, h6, p, span, li, button, a {
+  font-family: 'futura-pt', sans-serif;
+  color: var(--txt-default);
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2 {
+  font-weight: 500;
+  font-size: 7.563rem;
+  letter-spacing: 0.06em;
+  color: var(--txt-primary);
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+h1::after, h2::after {
+  content: '';
+  width: 60%;
+  height: 0.5rem;
+  background-color: var(--clr-primary);
+}
+
+h5 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  line-height: 1.292;
+  text-transform: uppercase;
+  color: var(--clr-primary);
+}
+
+.text-xs-bold {
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  line-height: 1.292;
+}
+
+.text-lg-light {
+  font-weight: 300;
+  font-size: 2.25rem;
+  letter-spacing: 0.028em;
+  line-height: 1.278;
+}
+
+/*===========================================================================================
+        Background
+=============================================================================================*/
+body {
+  background-color: var(--bg-dark);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body * {
+  z-index: 2;
+}
+
+.planets, .stars {
+  --x: 0;
+  --y: 0;
+  transform: translate(var(--x), var(--y));
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.planets {
+  overflow: visible;
+}
+
+.planets > circle {
+  transition: opacity 400ms ease-in;
+  opacity: 40%;
+  cursor: pointer;
+}
+
+/*===========================================================================================
+        Header
+=============================================================================================*/
+header {
+  margin: 0 var(--content-padding);
+  padding: 2.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2.875rem;
+}
+
+.nav-element {
+  padding: 0.5rem;
+  display: flex;
+}
+
+/*===========================================================================================
+        Hero Section
+=============================================================================================*/
+.hero {
+  padding: 0 0 0 var(--content-padding) ;
+  width: fit-content;
+}
+
+.scroll-down {
+  margin-bottom: 5.625rem;
+  width: 12.5rem;
+  height: 2.25rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.scroll-down:hover .scroll-down__background {
+  transform: translateX(1.25rem);
+}
+
+.scroll-down span {
+  position: relative;
+}
+
+.scroll-down__background {
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  background-color: var(--clr-primary);
+  transform: translateX(-3.375rem);
+  transition: 500ms ease-in-out;
+}
+
+
+
