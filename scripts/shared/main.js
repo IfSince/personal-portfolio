@@ -1,8 +1,8 @@
 import {createMenuEventListener} from "./create-menu-event-listener.js";
 import {updateBackground} from "./update-background.js";
 
-const planetElement = document.getElementById('planets');
-const starElement = document.getElementById('stars');
+const planetElement = document.querySelector('.planets');
+const starElement = document.querySelector('.stars');
 const menuBtn = document.querySelector("#menu-icon");
 
 createMenuEventListener(menuBtn);

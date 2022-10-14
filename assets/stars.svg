@@ -1,32 +1,28 @@
-<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
-
- <g>
-  <title>Layer 1</title>
-  <circle stroke-width="0" stroke="#000" r="8" id="svg_1" cy="796" cx="912" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_2" cy="117" cx="795" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="5" id="svg_3" cy="1047" cx="190" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_4" cy="237" cx="1888" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="5" id="svg_5" cy="28" cx="888" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_6" cy="175" cx="288" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_7" cy="369" cx="980" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_8" cy="258" cx="1237" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_9" cy="955" cx="1298" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_10" cy="19" cx="1566" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_11" cy="109" cx="1749" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="8" id="svg_12" cy="167" cx="1057" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_13" cy="195" cx="1439" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="5" id="svg_14" cy="286" cx="775" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_15" cy="391" cx="1617" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="5" id="svg_16" cy="563" cx="1045" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_17" cy="790" cx="509" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="5" id="svg_18" cy="755" cx="1579" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_19" cy="850" cx="1882" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_20" cy="569" cx="1625" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_21" cy="1056" cx="979" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="5" id="svg_22" cy="979" cx="1628" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="8" id="svg_23" cy="215" cx="1709" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="5" id="svg_24" cy="472" cx="1844" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_25" cy="736" cx="85" fill="#afa7a7"/>
-  <circle stroke-width="0" stroke="#000" r="3" id="svg_26" cy="1036" cx="436" fill="#afa7a7"/>
- </g>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" preserveAspectRatio="xMinYMin slice" xmlns="http://www.w3.org/2000/svg">
+  <circle r="8" cy="796" cx="912" fill="#afa7a7"/>
+  <circle r="3" cy="117" cx="795" fill="#afa7a7"/>
+  <circle r="5" cy="1047" cx="190" fill="#afa7a7"/>
+  <circle r="3" cy="237" cx="1888" fill="#afa7a7"/>
+  <circle r="5" cy="28" cx="888" fill="#afa7a7"/>
+  <circle r="3" cy="175" cx="288" fill="#afa7a7"/>
+  <circle r="3" cy="369" cx="980" fill="#afa7a7"/>
+  <circle r="3" cy="258" cx="1237" fill="#afa7a7"/>
+  <circle r="3" cy="955" cx="1298" fill="#afa7a7"/>
+  <circle r="3" cy="19" cx="1566" fill="#afa7a7"/>
+  <circle r="3" cy="109" cx="1749" fill="#afa7a7"/>
+  <circle r="8" cy="167" cx="1057" fill="#afa7a7"/>
+  <circle r="3" cy="195" cx="1439" fill="#afa7a7"/>
+  <circle r="5" cy="286" cx="775" fill="#afa7a7"/>
+  <circle r="3" cy="391" cx="1617" fill="#afa7a7"/>
+  <circle r="5" cy="563" cx="1045" fill="#afa7a7"/>
+  <circle r="3" cy="790" cx="509" fill="#afa7a7"/>
+  <circle r="5" cy="755" cx="1579" fill="#afa7a7"/>
+  <circle r="3" cy="850" cx="1882" fill="#afa7a7"/>
+  <circle r="3" cy="569" cx="1625" fill="#afa7a7"/>
+  <circle r="3" cy="1056" cx="979" fill="#afa7a7"/>
+  <circle r="5" cy="979" cx="1628" fill="#afa7a7"/>
+  <circle r="8" cy="215" cx="1709" fill="#afa7a7"/>
+  <circle r="5" cy="472" cx="1844" fill="#afa7a7"/>
+  <circle r="3" cy="736" cx="85" fill="#afa7a7"/>
+  <circle r="3" cy="1036" cx="436" fill="#afa7a7"/>
 </svg>
