@@ -73,6 +73,13 @@ h5 {
 }
 
 /*===========================================================================================
+        Helper
+=============================================================================================*/
+.mobile-only {
+  display: none;
+}
+
+/*===========================================================================================
         Background
 =============================================================================================*/
 body {
@@ -85,10 +92,6 @@ body {
   justify-content: space-between;
 }
 
-body * {
-  z-index: 2;
-}
-
 .planets, .stars {
   --x: 0;
   --y: 0;
@@ -96,7 +99,6 @@ body * {
   position: absolute;
   height: 100%;
   width: 100%;
-  z-index: 1;
 }
 
 .planets {
@@ -118,6 +120,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 3;
 }
 
 nav ul {
@@ -131,12 +134,31 @@ nav ul {
   display: flex;
 }
 
+#menu-icon {
+  aspect-ratio: 1 / 1;
+  border: none;
+  background: none;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+#menu-icon svg rect {
+  transition: all 0.2s ease-out;
+}
+
+#menu-icon:hover svg rect {
+  width: 100%;
+}
+
 /*===========================================================================================
         Hero Section
 =============================================================================================*/
 .hero {
   padding: 0 0 0 var(--content-padding) ;
   width: fit-content;
+  position: relative;
 }
 
 .scroll-down {
@@ -168,6 +190,71 @@ nav ul {
   transform: translateX(-3.375rem);
   transition: 500ms ease-in-out;
 }
+
+/*===========================================================================================
+        Media Query
+=============================================================================================*/
+@media screen and (max-width: 1300px) {
+  .mobile-only {
+    display: block;
+  }
+
+  nav {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(.72,.04,.34,1.01);
+    transform: translateY(-100%);
+  }
+
+  .menu-open {
+    transform: translateY(0);
+  }
+
+
+  nav ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(0deg, var(--darkgray), var(--darkblue));
+    padding: 2rem;
+    gap: 1rem;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav .nav-element {
+    padding: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 3.5rem;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #menu-icon {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  nav {
+    transform: translateY(100%);
+  }
+}
+
+
 
 
 

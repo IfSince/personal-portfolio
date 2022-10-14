@@ -1,12 +1,11 @@
+import {createMenuEventListener} from "./create-menu-event-listener.js";
+import {updateBackground} from "./update-background.js";
 
-// add event listener for svg elements
 const planetElement = document.getElementById('planets');
 const starElement = document.getElementById('stars');
+const menuBtn = document.querySelector("#menu-icon");
 
-function updateBackground(element, xValue, yValue, multiplicator) {
-    element.style.setProperty("--x", xValue * multiplicator + "px");
-    element.style.setProperty("--y", yValue * multiplicator + "px");
-}
+createMenuEventListener(menuBtn);
 
 document.body.addEventListener("mousemove", (e) => {
     updateBackground(planetElement, e.pageX, e.pageY, -0.02);
