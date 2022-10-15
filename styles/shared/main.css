@@ -92,7 +92,7 @@ body {
   justify-content: space-between;
 }
 
-.planets, .stars {
+.stars {
   --x: 0;
   --y: 0;
   transform: translate(var(--x), var(--y));
@@ -100,12 +100,41 @@ body {
   overflow: visible;
   width: 100%;
   height: 100%;
+  user-select: none;
+  pointer-events: none;
 }
 
-.planets > circle {
-  transition: opacity 400ms ease-in;
-  opacity: 40%;
-  cursor: pointer;
+.planet {
+  --x: 0;
+  --y: 0;
+  transform: translate(var(--x), var(--y));
+  position: fixed;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  opacity: 50%;
+}
+
+.planet__blue {
+  width: clamp(700vw, 800vw, 1000vw);
+  min-width: 31.25rem;
+  max-width: 47vw;
+  background-color: #363E59;
+  top: max(-20vh, calc(-20vh + ((1200px - 100vw) * 0.15)));
+  left: min(10vw, calc(-60vw + (100vw - 375px)));
+}
+
+.planet__orange {
+  width: clamp(31.25rem, 100vw, 37.5rem);
+  background-color: #D89D8F;
+  top: -23.75rem;
+  right: -21.875rem;
+}
+
+.planet__red {
+  background-color: #A66A74;
+  width: clamp(62.5rem, 200vw, 80rem);
+  bottom: -56.25rem;
+  right: -18.75rem;
 }
 
 /*===========================================================================================
@@ -113,7 +142,7 @@ body {
 =============================================================================================*/
 header {
   margin: 0 var(--content-padding);
-  padding: 2.5rem 0;
+  padding: 2.5rem 0 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
