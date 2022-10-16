@@ -105,36 +105,89 @@ body {
 }
 
 .planet {
-  --x: 0;
-  --y: 0;
-  transform: translate(var(--x), var(--y));
+  --x: 0px;
+  --y: 0px;
   position: fixed;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  opacity: 50%;
+  opacity: 0;
 }
 
+/*========================= Planet Blue ========================= */
 .planet__blue {
   width: clamp(700vw, 800vw, 1000vw);
   min-width: 31.25rem;
   max-width: 47vw;
   background-color: #363E59;
-  top: max(-20vh, calc(-20vh + ((1200px - 100vw) * 0.15)));
-  left: min(10vw, calc(-60vw + (100vw - 375px)));
+  top: calc(max(-20vh, calc(-20vh + ((1200px - 100vw) * 0.15))) + var(--y));
+  left: calc(min(10vw, calc(-60vw + (100vw - 375px))) + var(--x));
+
+  animation: planetBlueSlideIn;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
 }
 
+@keyframes planetBlueSlideIn {
+  from {
+    transform: translate(70%);
+  }
+
+  to {
+    opacity: 50%;
+    transform: translate(0);
+  }
+}
+
+/*========================= Planet Orange ========================= */
 .planet__orange {
-  width: clamp(31.25rem, 100vw, 37.5rem);
+  width: clamp(31.25rem, 60vw, 37.5rem);
   background-color: #D89D8F;
-  top: -23.75rem;
-  right: -21.875rem;
+  top: calc(-23.75rem + var(--y));
+  right: calc(-21.875rem - var(--x));
+
+  animation: planetOrangeSlideIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
 }
 
+@keyframes planetOrangeSlideIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 50%;
+    transform: translateX(0);
+  }
+}
+
+/*========================= Planet Red ========================= */
 .planet__red {
   background-color: #A66A74;
-  width: clamp(62.5rem, 200vw, 80rem);
-  bottom: -56.25rem;
-  right: -18.75rem;
+  width: clamp(62.5rem, 150vw, 80rem);
+  bottom: calc(-56.25rem - var(--y));
+  right: calc(-18.75rem - var(--x));
+
+  animation: planetRedSlideIn;
+  animation-duration: 1s;
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
+
+  transform: translate(50%);
+}
+
+@keyframes planetRedSlideIn {
+  from {
+    transform: translateX(50%);
+  }
+
+  to {
+    opacity: 50%;
+    transform: translateX(0);
+  }
 }
 
 /*===========================================================================================
@@ -186,12 +239,53 @@ nav ul {
         Hero Section
 =============================================================================================*/
 .hero {
-  padding: 0 0 0 var(--content-padding);
-  margin-right: var(--content-padding);
+  margin: 0 var(--content-padding);
   width: fit-content;
   position: relative;
+  overflow: hidden;
 }
 
+.hero * {
+  transform: translateX(-100%);
+}
+
+.hero h5 {
+  animation: heroSlideIn;
+  animation-duration: 1s;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
+}
+
+.hero h1 {
+  animation: heroSlideIn;
+  animation-duration: 0.8s;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
+}
+
+.hero p {
+  animation: heroSlideIn;
+  animation-duration: 0.8s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
+}
+
+@keyframes heroSlideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/*===========================================================================================
+        Scroll Down CTA
+=============================================================================================*/
 .scroll-down {
   margin-bottom: 5.625rem;
   width: 12.5rem;
@@ -205,10 +299,6 @@ nav ul {
   cursor: pointer;
 }
 
-.scroll-down:hover .scroll-down__background {
-  transform: translateX(1.25rem);
-}
-
 .scroll-down span {
   position: relative;
 }
@@ -218,8 +308,12 @@ nav ul {
   width: 150%;
   height: 100%;
   background-color: var(--clr-primary);
+  transition: 500ms cubic-bezier(.59,.24,.4,1);
   transform: translateX(-3.375rem);
-  transition: 500ms ease-in-out;
+}
+
+.scroll-down:hover .scroll-down__background {
+  transform: translateX(1.25rem);
 }
 
 /*===========================================================================================
