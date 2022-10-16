@@ -105,22 +105,27 @@ body {
 }
 
 .planet {
-  --x: 0px;
-  --y: 0px;
   position: fixed;
-  aspect-ratio: 1 / 1;
   border-radius: 50%;
   opacity: 0;
 }
 
-/*========================= Planet Blue ========================= */
+
+/*===========================================================================================
+        About Me / Planet Blue
+=============================================================================================*/
 .planet__blue {
-  width: clamp(700vw, 800vw, 1000vw);
+  --diameter: clamp(700vw, 800vw, 1000vw);
+  width: var(--diameter);
+  height: var(--diameter);
   min-width: 31.25rem;
   max-width: 47vw;
+  min-height: 31.25rem;
+  max-height: 47vw;
   background-color: #363E59;
-  top: calc(max(-20vh, calc(-20vh + ((1200px - 100vw) * 0.15))) + var(--y));
-  left: calc(min(10vw, calc(-60vw + (100vw - 375px))) + var(--x));
+
+  top: max(-20vh, calc(-20vh + ((1200px - 100vw) * 0.15)));
+  left: min(10vw, calc(-60vw + (100vw - 375px)));
 
   animation: planetBlueSlideIn;
   animation-duration: 0.8s;
@@ -128,6 +133,7 @@ body {
   animation-timing-function: cubic-bezier(.59,.24,.4,1);
 }
 
+/*========================= Keyframe-Animations / Animation-Classes ========================= */
 @keyframes planetBlueSlideIn {
   from {
     transform: translate(70%);
@@ -139,12 +145,16 @@ body {
   }
 }
 
-/*========================= Planet Orange ========================= */
+/*===========================================================================================
+        Contact Me / Planet Orange
+=============================================================================================*/
 .planet__orange {
-  width: clamp(31.25rem, 60vw, 37.5rem);
+  --diameter: clamp(31.25rem, 60vw, 37.5rem);
+  width: var(--diameter);
+  height: var(--diameter);
   background-color: #D89D8F;
-  top: calc(-23.75rem + var(--y));
-  right: calc(-21.875rem - var(--x));
+  top: -23.75rem;
+  right: -21.875rem;
 
   animation: planetOrangeSlideIn;
   animation-duration: 1s;
@@ -152,6 +162,7 @@ body {
   animation-timing-function: cubic-bezier(.59,.24,.4,1);
 }
 
+/*========================= Keyframe-Animations / Animation-Classes ========================= */
 @keyframes planetOrangeSlideIn {
   from {
     transform: translateX(100%);
@@ -163,12 +174,16 @@ body {
   }
 }
 
-/*========================= Planet Red ========================= */
+/*===========================================================================================
+        Contact Me / Planet Red
+=============================================================================================*/
 .planet__red {
+  --diameter: clamp(62.5rem, 150vw, 80rem);
+  width: var(--diameter);
+  height: var(--diameter);
   background-color: #A66A74;
-  width: clamp(62.5rem, 150vw, 80rem);
-  bottom: calc(-56.25rem - var(--y));
-  right: calc(-18.75rem - var(--x));
+  bottom: -56.25rem;
+  right: -18.75rem;
 
   animation: planetRedSlideIn;
   animation-duration: 1s;
@@ -179,6 +194,7 @@ body {
   transform: translate(50%);
 }
 
+/*========================= Keyframe-Animations / Animation-Classes ========================= */
 @keyframes planetRedSlideIn {
   from {
     transform: translateX(50%);
@@ -187,6 +203,73 @@ body {
   to {
     opacity: 50%;
     transform: translateX(0);
+  }
+}
+
+.planet__red.active {
+  animation: planetAnimation;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.72,.04,.34,1.01);
+}
+
+@keyframes planetAnimation {
+  0% {
+    transform: translate(0);
+    opacity: 50%;
+    border-radius: 50%;
+  }
+
+  40% {
+    opacity: 100%;
+  }
+
+  60% {
+    width: 55vw;
+    border-radius: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  100% {
+    transform: translate(0);
+    border-radius: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 100%;
+    width: 55vw;
+  }
+}
+
+.planet__red.unselect {
+  animation: planetAnimationReverse;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.72,.04,.34,1.01);
+}
+
+@keyframes planetAnimationReverse {
+  0% {
+    transform: translate(0);
+    border-radius: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 100%;
+    width: 55vw;
+  }
+
+  60% {
+    opacity: 100%;
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 50%;
+    border-radius: 50%;
+    width: clamp(62.5rem, 200vw, 80rem);
+    height: clamp(62.5rem, 200vw, 80rem);
+    bottom: -56.25rem;
+    right: -18.75rem;
   }
 }
 
@@ -296,11 +379,29 @@ nav ul li {
 
 @keyframes heroSlideIn {
   from {
-    transform: translateX(-100%);
+    transform: translate(-100%);
   }
 
   to {
-    transform: translateX(0);
+    transform: translate(0);
+  }
+}
+
+.hero .slideOut {
+  animation: heroSlideOut;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+@keyframes heroSlideOut {
+  from {
+    transform: translate(0);
+    opacity: 100%;
+  }
+  to {
+    transform: translate(0, -200px);
+    opacity: 0;
   }
 }
 
