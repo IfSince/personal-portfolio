@@ -8,7 +8,7 @@ const heroSection = document.querySelector(".hero");
 const scrollDownBtn = document.querySelector(".scroll-down");
 
 createMenuEventListener(menuBtn);
-updateContent(heroSection, initialContent)
+updateContent(heroSection, initialContent);
 
 // Mousemove effect for background
 document.body.addEventListener("mousemove", (e) => {

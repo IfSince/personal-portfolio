@@ -1,0 +1,269 @@
+/*===========================================================================================
+        Background
+=============================================================================================*/
+body {
+  background-color: var(--bg-dark);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stars {
+  --x: 0;
+  --y: 0;
+  transform: translate(var(--x), var(--y));
+  position: fixed;
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.planet {
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0;
+
+  --top-default: inherit;
+  --right-default: inherit;
+  --bottom-default: inherit;
+  --left-default: inherit;
+
+  width: var(--diameter);
+  height: var(--diameter);
+  top: var(--top-default);
+  right: var(--right-default);
+  bottom: var(--bottom-default);
+  left: var(--left-default);
+
+  animation: planetSlideIn;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
+}
+
+@keyframes planetSlideIn {
+  from {
+    transform: translate(70%);
+  }
+
+  to {
+    opacity: 50%;
+    transform: translate(0);
+  }
+}
+
+@keyframes planetAnimation {
+  0% {
+    border-radius: 50%;
+    opacity: 50%;
+  }
+
+  40% {
+    opacity: 100%;
+  }
+
+  100% {
+    border-radius: 0;
+    opacity: 100%;
+    top: var(--top-opened);
+    right: var(--right-opened);
+    bottom: var(--bottom-opened);
+    left: var(--left-opened);
+    width: var(--width-opened);
+    height: var(--height-opened);
+  }
+}
+
+@keyframes planetAnimationReverse {
+  0% {
+    border-radius: 0;
+    opacity: 100%;
+    top: var(--top-opened);
+    right: var(--right-opened);
+    bottom: var(--bottom-opened);
+    left: var(--left-opened);
+    width: var(--width-opened);
+    height: var(--height-opened);
+  }
+
+  60% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 50%;
+    top: var(--top-default);
+    right: var(--right-default);
+    bottom: var(--bottom-default);
+    left: var(--left-default);
+    width: var(--diameter);
+    height: var(--diameter);
+  }
+}
+
+/*===========================================================================================
+        About Me / Planet Blue
+=============================================================================================*/
+.planet__blue {
+  --diameter: clamp(700vw, 800vw, 1000vw);
+  --top-default: max(-20vh, calc(-20vh + ((1200px - 100vw) * 0.15)));
+  --left-default: min(10vw, calc(-60vw + (100vw - 375px)));
+
+  background-color: #363E59;
+  min-width: 31.25rem;
+  max-width: 47vw;
+  min-height: 31.25rem;
+  max-height: 47vw;
+  animation-duration: 0.8s;
+}
+
+/*===========================================================================================
+        Contact Me / Planet Orange
+=============================================================================================*/
+.planet__orange {
+  --diameter: clamp(31.25rem, 60vw, 37.5rem);
+  --top-default: -23.75rem;
+  --right-default: -21.875rem;
+
+  background-color: #D89D8F;
+  animation-duration: 1s;
+}
+
+/*===========================================================================================
+        My Portfolio / Planet Red
+=============================================================================================*/
+.planet__red {
+  --diameter: clamp(62.5rem, 150vw, 80rem);
+  --top-default: inherit;
+  --right-default: -18.75rem;
+  --bottom-default: -56.25rem;
+  --left-default: inherit;
+
+  background-color: #A66A74;
+  animation-duration: 1s;
+  animation-delay: 0.2s;
+
+  --top-opened: inherit;
+  --right-opened: 0;
+  --bottom-opened: 0;
+  --left-opened: inherit;
+  --width-opened: 55vw;
+  --height-opened: 100%;
+}
+
+.planet__red.active {
+  animation: planetAnimation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.72,.04,.34,1.01);
+}
+
+.planet__red.unselect {
+  animation: planetAnimationReverse;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.72,.04,.34,1.01);
+}
+
+/*===========================================================================================
+        Hero Section
+=============================================================================================*/
+.hero {
+  margin: 0 var(--content-padding);
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero * {
+  transform: translateX(-100%);
+}
+
+.hero h5 {
+  animation: heroSlideIn;
+  animation-duration: 1s;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
+}
+
+.hero h1 {
+  animation: heroSlideIn;
+  animation-duration: 0.8s;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
+}
+
+.hero p {
+  animation: heroSlideIn;
+  animation-duration: 0.8s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.59,.24,.4,1);
+}
+
+@keyframes heroSlideIn {
+  from {
+    transform: translate(-100%);
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+.hero .slideOut {
+  animation: heroSlideOut;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+@keyframes heroSlideOut {
+  from {
+    transform: translate(0);
+    opacity: 100%;
+  }
+  to {
+    transform: translate(0, -200px);
+    opacity: 0;
+  }
+}
+
+/*===========================================================================================
+        Scroll Down CTA
+=============================================================================================*/
+.scroll-down {
+  margin-bottom: 5.625rem;
+  width: 12.5rem;
+  height: 2.25rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.scroll-down span {
+  position: relative;
+}
+
+.scroll-down__background {
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  background-color: var(--clr-primary);
+  transition: 500ms cubic-bezier(.59,.24,.4,1);
+  transform: translateX(-3.375rem);
+}
+
+.scroll-down:hover .scroll-down__background {
+  transform: translateX(1.25rem);
+}

@@ -10,9 +10,16 @@ export const initialContent =  {
 
 export const portfolioContent = {
     h5: "Take a look at",
-    h1: "My Portfolio",
+    h1: "My Portfolio.",
     text: "Some of the projects I developed<br>and contributed to over the last years.",
     relatedPlanet: document.querySelector(".planet__red")
+}
+
+export const aboutMeContent = {
+    h5: "Lern more",
+    h1: "About Me.",
+    text: "Some of the projects I developed<br>and contributed to over the last years.",
+    relatedPlanet: document.querySelector(".planet__blue")
 }
 
 
