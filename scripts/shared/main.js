@@ -26,11 +26,17 @@ scrollDownBtn.addEventListener(("click"), () => {
 });
 
 // Scroll Function
+let isLoading = false;
 window.addEventListener("wheel", (e) => {
-    if (e.deltaY < 0) {
-        contentSlider.scrollInDirection("up")
-    }
-    else if (e.deltaY > 0) {
-        contentSlider.scrollInDirection("down")
+    if (!isLoading) {
+        if (e.deltaY < 0) {
+            contentSlider.scrollInDirection("up")
+        }
+        else if (e.deltaY > 0) {
+            contentSlider.scrollInDirection("down")
+        }
+
+        setTimeout(() => isLoading = false, 1800)
+        isLoading = true;
     }
 });
