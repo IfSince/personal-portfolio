@@ -83,12 +83,16 @@ h5 {
         Header
 =============================================================================================*/
 header {
-  margin: 0 var(--content-padding);
-  padding: 2.5rem 0 0 0;
+  top: 0;
+  left: 0;
+  padding: 2.5rem var(--content-padding) 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 3;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
 }
 
 nav ul {
