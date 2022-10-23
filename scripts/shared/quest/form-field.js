@@ -32,22 +32,73 @@ export class FormField {
         this.errors = [];
         for (const key in this.validations) {
             switch (key) {
+                case "mandatory": {
+                    this.validateMandatory(key)
+                    break;
+                }
                 case "minLength": {
-                    if (this.validations[key] > (this.value?.length || 0)) {
-                        this.errors.push(`Das Feld muss mindestens ${this.validations[key]} Zeichen lang sein.`)
-                    }
+                    this.validateMinLength(key)
                     break;
                 }
                 case "maxLength": {
-                    if (this.validations[key] < (this.value?.length || 0)) {
-                        this.errors.push(`Das Feld darf maximal ${this.validations[key]} Zeichen lang sein.`)
-                    }
+                    this.validateMaxLength(key)
                     break;
                 }
+                case "textOnly": {
+                    this.validateTextOnly(key)
+                    break;
+                }
+                case "numbersOnly": {
+                    this.validateNumbersOnly();
+                    break;
+                }
+                case "isEmail": {
+                    this.validateIsEmail();
+                    break;
+                }
+                default: break;
             }
         }
         this.writeValidationResult()
     }
+
+    validateMandatory(key) {
+        if (this.validations[key] && !this.value) {
+            this.errors.push("Das Feld ist ein Pflichtfeld.")
+        }
+    }
+
+    validateMinLength(key) {
+        if (this.value?.length > 0 && this.validations[key] > this.value?.length) {
+            this.errors.push(`Das Feld muss mindestens ${this.validations[key]} Zeichen lang sein.`)
+        }
+    }
+
+    validateMaxLength(key) {
+        if (this.validations[key] < this.value?.length) {
+            this.errors.push(`Das Feld darf maximal ${this.validations[key]} Zeichen lang sein.`)
+        }
+    }
+
+    validateTextOnly() {
+        if (this.value?.length > 0 && !/^[a-zA-Z]+$/g.test(this.value)) {
+            this.errors.push("Das Feld darf nur Buchstaben beinhalten.")
+        }
+    }
+
+    validateNumbersOnly() {
+        if (!/\d+/.test(this.value)) {
+            this.errors.push("Das Feld darf nur Zahlen beinhalten.")
+        }
+    }
+
+    validateIsEmail() {
+        if (!/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-z]+)$/.test(this.value)) {
+            this.errors.push("Bitte geben Sie eine gültige E-Mail ein.");
+        }
+    }
+
+
 
     writeValidationResult() {
         let errorList = this.domElement.nextElementSibling

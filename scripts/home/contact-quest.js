@@ -5,20 +5,51 @@ export const contactForm = document.querySelector("#contactForm")
 
 const personalFormFields = [
     new FormField(document.querySelector("#salutation")),
-    new FormField(document.querySelector("#firstName"), {minLength: 2, maxLength: 40}),
-    new FormField(document.querySelector("#surname"), {minLength: 2, maxLength: 40}),
+    new FormField(document.querySelector("#firstName"), {
+        minLength: 2,
+        maxLength: 40,
+        textOnly: true,
+    }),
+    new FormField(document.querySelector("#surname"), {
+        mandatory: true,
+        minLength: 2,
+        maxLength: 40,
+        textOnly: true
+    }),
 ]
 
 const addressFormFields = [
-    new FormField(document.querySelector("#street")),
-    new FormField(document.querySelector("#houseNr")),
-    new FormField(document.querySelector("#zip")),
-    new FormField(document.querySelector("#city")),
+    new FormField(document.querySelector("#street"), {
+        minLength: 2,
+        maxLength: 40,
+        textOnly: true
+    }),
+    new FormField(document.querySelector("#houseNr"), {
+        maxLength: 6
+    }),
+    new FormField(document.querySelector("#zip"), {
+        minLength: 5,
+        maxLength: 5,
+        numbersOnly: true
+    }),
+    new FormField(document.querySelector("#city"), {
+        minLength: 2,
+        maxLength: 40,
+        textOnly: true
+    }),
 ]
 
 const messageFormFields = [
-    new FormField(document.querySelector("#email")),
-    new FormField(document.querySelector("#message")),
+    new FormField(document.querySelector("#email"), {
+        mandatory: true,
+        isEmail: true,
+        maxLength: 40
+    }),
+    new FormField(document.querySelector("#message"), {
+        mandatory: true,
+        minLength: 10,
+        maxLength: 300
+    }),
 ]
 
 const personalStepPanel = contactForm.querySelector("#personalStep")
