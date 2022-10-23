@@ -16,7 +16,7 @@ const personalFormFields = [
         maxLength: 40,
         textOnly: true
     }),
-]
+];
 
 const addressFormFields = [
     new FormField(document.querySelector("#street"), {
@@ -37,7 +37,7 @@ const addressFormFields = [
         maxLength: 40,
         textOnly: true
     }),
-]
+];
 
 const messageFormFields = [
     new FormField(document.querySelector("#email"), {
@@ -50,14 +50,14 @@ const messageFormFields = [
         minLength: 10,
         maxLength: 300
     }),
-]
+];
 
-const personalStepPanel = contactForm.querySelector("#personalStep")
-const addressStepPanel = contactForm.querySelector("#addressStep")
-const messageStepPanel = contactForm.querySelector("#messageStep")
+const personalStepPanel = contactForm.querySelector("#personalStep");
+const addressStepPanel = contactForm.querySelector("#addressStep");
+const messageStepPanel = contactForm.querySelector("#messageStep");
 
 export const contactQuestSteps = [
     new QuestStep(personalFormFields, "Personal", personalStepPanel),
     new QuestStep(addressFormFields, "Address", addressStepPanel),
     new QuestStep(messageFormFields, "Message", messageStepPanel)
-]
+];

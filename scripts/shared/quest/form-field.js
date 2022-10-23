@@ -1,51 +1,56 @@
 import {createDomElement} from "../../util/createDomElement.js";
 
 export class FormField {
-    errors = []
+    errors = [];
     value = null;
 
     /**
-     *
-     * @param domElement {Element}
+     * @param domElement {HTMLElement}
      * @param validations {Object}
      */
     constructor(domElement, validations = {}) {
-        this.domElement = domElement
-        this.validations = validations
+        this.domElement = domElement;
+        this.validations = validations;
 
         this.domElement.insertAdjacentElement(
             "afterend",
             createDomElement("ul", null, ["form-control__errors"])
-        )
+        );
 
-        this.addEventListener()
+        this.addEventListener();
     }
 
+    /**
+     * Adds event listeners for formfield
+     */
     addEventListener() {
         this.domElement.addEventListener("focusout", (e) => {
             this.value = e.target.value.trim();
             this.validate();
-        })
+        });
     }
 
+    /**
+     * Validates FormField
+     */
     validate() {
         this.errors = [];
         for (const key in this.validations) {
             switch (key) {
                 case "mandatory": {
-                    this.validateMandatory(key)
+                    this.validateMandatory(key);
                     break;
                 }
                 case "minLength": {
-                    this.validateMinLength(key)
+                    this.validateMinLength(key);
                     break;
                 }
                 case "maxLength": {
-                    this.validateMaxLength(key)
+                    this.validateMaxLength(key);
                     break;
                 }
                 case "textOnly": {
-                    this.validateTextOnly(key)
+                    this.validateTextOnly(key);
                     break;
                 }
                 case "numbersOnly": {
@@ -59,36 +64,36 @@ export class FormField {
                 default: break;
             }
         }
-        this.writeValidationResult()
+        this.writeValidationResult();
     }
 
     validateMandatory(key) {
         if (this.validations[key] && !this.value) {
-            this.errors.push("Das Feld ist ein Pflichtfeld.")
+            this.errors.push("Das Feld ist ein Pflichtfeld.");
         }
     }
 
     validateMinLength(key) {
         if (this.value?.length > 0 && this.validations[key] > this.value?.length) {
-            this.errors.push(`Das Feld muss mindestens ${this.validations[key]} Zeichen lang sein.`)
+            this.errors.push(`Das Feld muss mindestens ${this.validations[key]} Zeichen lang sein.`);
         }
     }
 
     validateMaxLength(key) {
         if (this.validations[key] < this.value?.length) {
-            this.errors.push(`Das Feld darf maximal ${this.validations[key]} Zeichen lang sein.`)
+            this.errors.push(`Das Feld darf maximal ${this.validations[key]} Zeichen lang sein.`);
         }
     }
 
     validateTextOnly() {
         if (this.value?.length > 0 && !/^[a-zA-Z]+$/g.test(this.value)) {
-            this.errors.push("Das Feld darf nur Buchstaben beinhalten.")
+            this.errors.push("Das Feld darf nur Buchstaben beinhalten.");
         }
     }
 
     validateNumbersOnly() {
         if (!/\d+/.test(this.value)) {
-            this.errors.push("Das Feld darf nur Zahlen beinhalten.")
+            this.errors.push("Das Feld darf nur Zahlen beinhalten.");
         }
     }
 
@@ -98,21 +103,25 @@ export class FormField {
         }
     }
 
-
-
+    /**
+     * Creates DOM-Elements for Errors
+     */
     writeValidationResult() {
-        let errorList = this.domElement.nextElementSibling
+        let errorList = this.domElement.nextElementSibling;
         errorList.innerHTML = null;
 
         if (!this.isValid) {
             this.errors.forEach((error) => {
-                const element = createDomElement("li", error)
-                errorList.appendChild(element)
+                const element = createDomElement("li", error);
+                errorList.appendChild(element);
             });
         }
     }
 
+    /**
+     * @returns {boolean}
+     */
     get isValid() {
-        return !!this.errors && this.errors.length === 0
+        return !!this.errors && this.errors.length === 0;
     }
 }

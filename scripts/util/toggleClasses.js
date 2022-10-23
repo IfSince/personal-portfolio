@@ -6,13 +6,13 @@
  */
 export function toggleClasses(firstClass, secondClass, target) {
     if (!!target) {
-        const classList = target.classList
+        const classList = target.classList;
         if (classList.contains(firstClass)) {
-            classList.remove(firstClass)
-            classList.add(secondClass)
+            classList.remove(firstClass);
+            classList.add(secondClass);
         } else {
-            classList.add(firstClass)
-            classList.remove(secondClass)
+            classList.add(firstClass);
+            classList.remove(secondClass);
         }
     }
 }

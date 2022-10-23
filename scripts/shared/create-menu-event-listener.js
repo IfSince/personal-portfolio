@@ -2,9 +2,8 @@
  * Always adds menu-transition class when button is clicked and remove it after.
  * This fixes the problem with the transition also taking place when switching between desktop and mobile menu.
  * Manually remove transition-delay with timeOut so that it only delays on closing.
- * @param element {Element}
+ * @param element {HTMLElement}
  */
-
 export function createMenuEventListener(element) {
     const navigation = document.querySelector("nav");
     element.addEventListener("click", () => {

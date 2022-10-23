@@ -4,6 +4,7 @@ export class Slider {
     activeSlideIndex = 0
     activeSlide = null;
     interval = null;
+
     /**
      *
      * @param container {HTMLElement}
@@ -15,69 +16,82 @@ export class Slider {
         this.slides = slides;
         this.autoTime = autoTime;
 
-        this.init()
+        this.init();
     }
 
     /**
      * Initialises Slider-DOM
      */
     init() {
-        const imageSlide = createDomElement("img", null, ["project-slider__img"])
-        imageSlide.src = this.slides[this.activeSlideIndex]
-        imageSlide.addEventListener("click", () => this.toggleTimer())
+        const imageSlide = createDomElement("img", null, ["project-slider__img"]);
+        imageSlide.src = this.slides[this.activeSlideIndex];
+        imageSlide.addEventListener("click", () => this.toggleTimer());
 
-        const prevBtn = createDomElement("div", null, ["project-slider__btn", "prev"])
-        prevBtn.addEventListener("click", () => this.changeSlide(-1))
+        const prevBtn = createDomElement("div", null, ["project-slider__btn", "prev"]);
+        prevBtn.addEventListener("click", () => this.changeSlide(-1));
 
-        const nextBtn = createDomElement("div", null, ["project-slider__btn", "next"])
-        nextBtn.addEventListener("click", () => this.changeSlide(1))
+        const nextBtn = createDomElement("div", null, ["project-slider__btn", "next"]);
+        nextBtn.addEventListener("click", () => this.changeSlide(1));
 
-        this.activeSlide = imageSlide
-        this.container.appendChild(imageSlide)
-        this.container.appendChild(prevBtn)
-        this.container.appendChild(nextBtn)
-        this.play()
+        this.activeSlide = imageSlide;
+        this.container.appendChild(imageSlide);
+        this.container.appendChild(prevBtn);
+        this.container.appendChild(nextBtn);
+        this.play();
     }
 
+    /**
+     * Changes slide based on direction
+     * @param direction {1 || -1}
+     */
     changeSlide(direction) {
-        const newIndex = this.activeSlideIndex + direction
-        const maxIndex = this.slides.length - 1
+        const newIndex = this.activeSlideIndex + direction;
+        const maxIndex = this.slides.length - 1;
 
         if (newIndex < 0) {
-            this.activeSlideIndex = maxIndex
+            this.activeSlideIndex = maxIndex;
         } else if (newIndex > maxIndex) {
-            this.activeSlideIndex = 0
+            this.activeSlideIndex = 0;
         } else {
-            this.activeSlideIndex = newIndex
+            this.activeSlideIndex = newIndex;
         }
 
-        this.updateSlide()
-        this.pause()
-        this.play()
+        this.updateSlide();
+        this.pause();
+        this.play();
     }
 
     updateSlide() {
-        this.activeSlide.src = this.slides[this.activeSlideIndex]
+        this.activeSlide.src = this.slides[this.activeSlideIndex];
     }
 
+    /**
+     * toggles auto slide if interval is set
+     */
     toggleTimer() {
         if (this.interval) {
-            this.pause()
+            this.pause();
         } else {
-            this.play()
+            this.play();
         }
     }
 
+    /**
+     * stop auto slide
+     */
     pause() {
         if (this.autoTime) {
-            clearInterval(this.interval)
-            this.interval = null
+            clearInterval(this.interval);
+            this.interval = null;
         }
     }
 
+    /**
+     * start auto slide
+     */
     play() {
         if (this.autoTime) {
-            this.interval = setInterval(() => this.changeSlide(1), this.autoTime)
+            this.interval = setInterval(() => this.changeSlide(1), this.autoTime);
         }
     }
 

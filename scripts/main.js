@@ -2,7 +2,7 @@ import {createMenuEventListener} from "./shared/create-menu-event-listener.js";
 import {updateBackground} from "./home/update-background.js";
 import {Slider} from "./shared/slider.js";
 import {Quest} from "./shared/quest/quest.js";
-import {contactForm, contactQuestSteps} from "./home/contact-quest.js";
+import {contactForm, contactQuestSteps} from './home/contact-quest.js';
 
 const starElement = document.querySelector('.stars');
 const menuBtn = document.querySelector("#menu-icon");
@@ -15,13 +15,13 @@ const images = [
     "./assets/home/projects/riding_rocket.jpg",
     "./assets/home/projects/riding_rocket_peace.jpg",
     "./assets/home/projects/trying_out.jpg",
-]
+];
 
 //Projects Slider
 new Slider(projectSliderContainer, images, 3000);
 
 //Contact Form Quest
-new Quest(contactForm, contactQuestSteps)
+new Quest(contactForm, contactQuestSteps);
 
 createMenuEventListener(menuBtn);
 
