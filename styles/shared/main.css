@@ -10,9 +10,12 @@
   --darkgray: #071226;
   --darkblue: #363E59;
   --clr-primary: #A66A74;
+  --clr-primary-hover: #86565e;
   --orange: #D99D8F;
   --txt-primary: #FFFFFF;
   --txt-default: #E2E2E2;
+
+  --error: #e33333;
 
   --content-padding: 8.75rem;
 }
@@ -20,7 +23,7 @@
 /*===========================================================================================
         Font Definitions
 =============================================================================================*/
-h1, h2, h3, h4, h5, h6, p, span, li, button, a {
+h1, h2, h3, h4, h5, h6, p, span, li, button, a, label, input, select, textarea {
   font-family: 'futura-pt', sans-serif;
   color: var(--txt-default);
 }
@@ -47,6 +50,10 @@ h1::after, h2::after {
   width: 60%;
   height: 0.07em;
   background-color: var(--clr-primary);
+}
+
+h3 {
+  font-size: 1.5rem;
 }
 
 h5 {
@@ -77,6 +84,209 @@ h5 {
 =============================================================================================*/
 .mobile-only {
   display: none;
+}
+
+.btn {
+  margin-top: 30px;
+  padding: 13px 24px;
+  border: none;
+  border-radius: 2px;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary {
+  background-color: var(--clr-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--clr-primary-hover);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+textarea.form-control {
+  height: auto;
+  resize: vertical;
+}
+
+.form-control__errors {
+  margin-top: 0.3rem;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.form-control__errors li {
+  color: var(--error);
+}
+
+/*===========================================================================================
+        Defaults
+=============================================================================================*/
+label {
+  display: block;
+  border: none;
+  border-radius: 0;
+  font-size: 18px;
+  color: var(--darkgray);
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+
+label::after {
+  content: '';
+}
+
+input, select, textarea {
+  border: none;
+  color: var(--bg-dark);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 2px;
+  width: 100%;
+  padding: 5px 10px;
+  overflow: visible;
+}
+
+input:focus, select:focus, textarea:focus {
+  /*outline: 1px solid red;*/
+  outline: none;
+  box-shadow: inset 0 0 3px 0 var(--clr-primary);
+  transition: box-shadow 0.1s;
+}
+
+.d-flex {
+  display: flex;
+}
+
+/*===========================================================================================
+        Layout  -- kopiert ;)
+=============================================================================================*/
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+.form-row > .col, .form-row > [class*=col-] {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.col-12, .col-lg-8 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.mt-4, .my-4 {
+  margin-top: 1.5rem!important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.mr-auto {
+  margin-right: auto !important;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.p-4 {
+  padding: 1.5rem !important;
+}
+
+.shadow {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.rounded {
+  border-radius: 0.25rem!important;
+}
+
+.bg-white {
+  background-color: #fff!important;
+}
+
+@media screen and (min-width: 992px){
+  .col-lg-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+}
+
+@media (min-width: 576px) {
+  .mt-sm-0, .my-sm-0 {
+    margin-top: 0!important;
+  }
+
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .col-sm-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .col-sm-4 {
+    flex: 0 0 33%;
+    max-width: 33%;
+  }
 }
 
 /*===========================================================================================
@@ -200,15 +410,38 @@ nav ul li {
     transform: translateY(100%);
     transition: transform 0.5s cubic-bezier(.41,.18,.29,1)
   }
-
-  .scroll-down {
-    margin-bottom: 3rem;
-  }
 }
 
 @media screen and (max-width: 1000px) {
   :root {
     --content-padding: 2.5rem;
+  }
+
+  header {
+    padding: 1rem var(--content-padding);
+  }
+
+  .btn {
+    padding: 10px 20px;
+  }
+
+  .contact-form {
+    gap: 20px;
+  }
+
+  .col-xs-5 {
+    flex-grow: 40;
+    max-width: 40%;
+    min-width: 150px;
+  }
+
+  .col-xs-10 {
+    flex-grow: 100 !important;
+    max-width: 100% !important;
+  }
+
+  textarea {
+    height: 100px;
   }
 }
 

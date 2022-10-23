@@ -41,12 +41,12 @@
   </header>
   
   <section class="content-section">
-    <div></div>
     <div class="hero">
       <h5>Hello there I'm</h5>
-      <h1>Leon Laade.</h1>
+      <h1>Leon Laade</h1>
       <p class="text-lg-light">I'm a web designer &<br>frontend developer from Germany.</p>
     </div>
+
     <div class="scroll-down">
       <div class="scroll-down__background"></div>
       <span>Scroll</span><span>Down</span>
@@ -54,24 +54,122 @@
   </section>
   
   <section class="content-section">
-    <div></div>
     <div class="hero">
       <h5>Take a look at</h5>
       <h1>My Portfolio</h1>
       <p class="text-lg-light">Some of the projects I developed<br>and contributed to over the last years.</p>
     </div>
-    <div></div>
+    
+    <div class="side-container">
+      <div class="side-container__content projects"></div>
+    </div>
   </section>
   
   <section class="content-section">
-    <div></div>
     <div class="hero">
       <h5>Learn more</h5>
       <h1>About me</h1>
       <p class="text-lg-light">Some of the projects I developed<br>and contributed to over the last years.</p>
     </div>
-    <div></div>
+    
+    <div class="side-container">
+      <div class="side-container__content about"></div>
+    </div>
   </section>
-
+  
+  <section class="content-section">
+    <div class="hero">
+      <h5>Feel free to</h5>
+      <h1>Contact</h1>
+      <p class="text-lg-light">If you are interested in working<br>with me.</p>
+    </div>
+  
+    <div class="side-container">
+      <div class="side-container__content contact">
+        <div class="quest" id="contactForm">
+          <div class="row">
+            <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
+              <div class="quest__progress"></div>
+            </div>
+          </div>
+          
+          <form action="" class="quest__form" style="height: 330px">
+            <div class="quest__panel shadow p-4 rounded bg-white" id="personalStep">
+              <h3 class="quest__title">Personal</h3>
+              <div class="quest__content">
+                <div class="form-row mt-4">
+                  <div class="col-12 col-sm-3">
+                    <select id="salutation" class="quest__input form-control">
+                      <option value="Mr">Mr</option>
+                      <option value="Mrs">Mrs</option>
+                      <option value="Mx">Mx</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row mt-4">
+                  <div class="col-12 col-sm-6">
+                    <input class="quest__input form-control" type="text" placeholder="First Name" id="firstName">
+                  </div>
+                  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                    <input class="quest__input form-control" type="text" placeholder="Surname" id="surname">
+                  </div>
+                </div>
+                <div class="button-row d-flex mt-4">
+                  <button class="btn btn-primary ml-auto" type="button" title="Next" data-btn-type="next">Next</button>
+                </div>
+              </div>
+            </div>
+  
+            <div class="quest__panel shadow p-4 rounded bg-white" id="addressStep">
+              <h3 class="quest__title">Address</h3>
+              <div class="quest__content">
+                <div class="form-row mt-4">
+                  <div class="col-12 col-lg-8">
+                    <input class="quest__input form-control" type="text" placeholder="Street" id="street">
+                  </div>
+                  <div class="col-12 col-sm-4">
+                    <input class="quest__input form-control" type="text" placeholder="House nr." id="houseNr">
+                  </div>
+                </div>
+                <div class="form-row mt-4">
+                  <div class="col-12 col-sm-4 mt-4 mt-sm-0">
+                    <input class="quest__input form-control" type="text" placeholder="ZIP" id="zip">
+                  </div>
+                  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                    <input class="quest__input form-control" type="text" placeholder="City" id="city">
+                  </div>
+                </div>
+                <div class="button-row d-flex mt-4">
+                  <button class="btn btn-primary" type="button" title="Previous" data-btn-type="prev">Previous</button>
+                  <button class="btn btn-primary ml-auto" type="button" title="Next" data-btn-type="next">Next</button>
+                </div>
+              </div>
+            </div>
+  
+            <div class="quest__panel shadow p-4 rounded bg-white" id="messageStep">
+              <h3 class="quest__title">Message</h3>
+              <div class="quest__content">
+                <div class="form-row mt-4">
+                  <div class="col-12 col-lg-8">
+                    <input class="quest__input form-control" type="text" placeholder="Email" id="email">
+                  </div>
+                </div>
+                <div class="form-row mt-4">
+                  <div class="col">
+                    <textarea class="quest__input form-control" placeholder="Message" id="message"></textarea>
+                  </div>
+                </div>
+                <div class="button-row d-flex mt-4">
+                  <button class="btn btn-primary" type="button" title="Previous" data-btn-type="prev">Previous</button>
+                  <button class="btn btn-primary ml-auto" type="button" title="Next" data-btn-type="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

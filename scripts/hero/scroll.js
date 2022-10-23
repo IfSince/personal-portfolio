@@ -4,6 +4,8 @@ export class ContentSlider {
     constructor(elements, childClass) {
         this.elements = elements;
         this.childClass = childClass;
+
+        this.scrollToIndex(0)
     }
 
     scrollInDirection(direction = "down") {
@@ -16,29 +18,38 @@ export class ContentSlider {
         }
 
         if (newIndex !== this.currentIndex) {
-            const currentElement = this.elements[this.currentIndex].querySelector(`.${this.childClass}`)
-            const nextElement = this.elements[newIndex].querySelector(`.${this.childClass}`)
+            const currentElement = this.elements[this.currentIndex]
+            const nextElement = this.elements[newIndex]
 
-            this.handleScrolling(currentElement, nextElement);
+            this.handleScrolling(currentElement, nextElement, newIndex);
             this.currentIndex = newIndex;
         }
     }
 
     scrollToIndex(index) {
         if (index !== this.currentIndex) {
-            const currentElement = this.elements[this.currentIndex]?.querySelector(`.${this.childClass}`)
-            const nextElement = this.elements[index].querySelector(`.${this.childClass}`)
+            const currentElement = this.elements[this.currentIndex]
+            const nextElement = this.elements[index]
 
-            this.handleScrolling(currentElement, nextElement);
+            this.handleScrolling(currentElement, nextElement, index);
             this.currentIndex = index;
         }
     }
 
-    handleScrolling(currentElement, nextElement) {
-        if (currentElement !== nextElement) {
-            currentElement?.classList.remove("active");
-            nextElement.classList.add("active");
-            nextElement.scrollIntoView({block: "center", inline: "center"});
+    handleScrolling(currentContainer, nextContainer, index) {
+        const currentHero = currentContainer?.querySelector(`.${this.childClass}`)
+        const nextHero = nextContainer.querySelector(`.${this.childClass}`)
+
+        const currentFeature = currentContainer?.querySelector(".side-container")?.querySelector(".side-container__content")
+        const nextFeature = nextContainer.querySelector(".side-container")?.querySelector(".side-container__content")
+        if (currentHero !== nextHero) {
+            currentHero?.classList.remove("active");
+            nextHero.classList.add("active");
+
+            currentFeature?.classList.remove("active");
+            nextFeature?.classList.add("active");
+
+            nextContainer.scrollIntoView({block: "center", inline: "center"});
         }
     }
 

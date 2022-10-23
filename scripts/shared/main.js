@@ -1,11 +1,16 @@
 import {createMenuEventListener} from "./create-menu-event-listener.js";
 import {updateBackground} from "./update-background.js";
 import {ContentSlider} from "../hero/scroll.js";
+import {Quest} from "./quest/quest.js";
+import {contactForm, contactQuestSteps} from "../hero/contact-quest.js";
 
 const starElement = document.querySelector('.stars');
 const menuBtn = document.querySelector("#menu-icon");
 const scrollDownBtn = document.querySelector(".scroll-down");
 const contentList = document.querySelectorAll(".content-section");
+
+//Create Quest
+const contactQuest = new Quest(contactForm, contactQuestSteps)
 
 createMenuEventListener(menuBtn);
 
@@ -16,9 +21,6 @@ document.body.addEventListener("mousemove", (e) => {
 
 
 const contentSlider = new ContentSlider(contentList, "hero");
-
-//initial load
-contentSlider.scrollToIndex(0);
 
 // Scroll Down Button
 scrollDownBtn.addEventListener(("click"), () => {
