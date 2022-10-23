@@ -8,6 +8,7 @@ html {
 body {
   background-color: var(--bg-dark);
   overflow: hidden;
+  overflow-y: visible;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -231,21 +232,67 @@ body {
 }
 
 .side-container .side-container__content {
-  width: 70%;
-  height: 70%;
-  transform: scale(85%) translateX(10%);
-  transition: transform 1.5s cubic-bezier(.16,.16,.53,.99);
-}
-
-.side-container .side-container__content.active {
-  transform: scale(1) translateX(0);
+  width: 100%;
+  height: 100%;
+  padding: 15vh 10%;
 }
 
 /*===========================================================================================
         Side-Content - Projects
 =============================================================================================*/
 .side-container .projects {
-  background: var(--clr-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.projects.active .project-slider {
+  transform: scale(1) translateX(0);
+}
+
+.project-slider {
+  aspect-ratio: 1 / 1;
+  transform: scale(85%) translateX(10%);
+  transition: transform 1.5s cubic-bezier(.16,.16,.53,.99);
+  width: 100%;
+  max-width: 715px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-slider__btn {
+  position: relative;
+  height: 100%;
+  width: 20%;
+  min-width: 20px;
+  background: #363E59;
+  z-index: 10;
+  cursor: pointer;
+  background: rgba(54, 62, 89, 0);
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+
+.project-slider__btn.prev:hover {
+  opacity: 1;
+  background: linear-gradient(90deg, #363E59 0%, rgba(160,166,172,0) 100%);
+}
+
+.project-slider__btn.next:hover {
+  opacity: 1;
+  background: linear-gradient(-90deg, #363E59 0%, rgba(160, 166, 172, 0) 100%);
+}
+
+.project-slider__img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
 }
 
 /*===========================================================================================
@@ -260,7 +307,8 @@ body {
 =============================================================================================*/
 .side-container .contact {
   background: var(--orange);
-  padding: 60px 5vw 70px;
+
+  padding: 15vh 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -268,7 +316,7 @@ body {
 
 .quest {
   width: 100%;
-  height: 100%;
+  max-width: 715px;
 }
 
 .quest__progress {
@@ -424,11 +472,17 @@ body {
 @media screen and (max-width: 1000px) {
   .content-section {
     flex-direction: column-reverse;
+    justify-content: space-between;
+    padding-bottom: var(--content-padding);
   }
 
   .content-section .side-container {
     position: unset;
     width: 100%;
-    height: 55vh;
+    height: 100%;
+  }
+
+  .side-container .side-container__content {
+    padding: 8vh 20vw 5vh;
   }
 }

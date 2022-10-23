@@ -12,10 +12,10 @@
   <link rel="stylesheet" type="text/css" href="./styles/shared/reset.css">
   <link rel="stylesheet" type="text/css" href="./styles/shared/main.css">
   <link rel="stylesheet" type="text/css" href="./styles/home.css">
-  <script type="module" src="./scripts/shared/main.js" defer></script>
+  <script type="module" src="./scripts/main.js" defer></script>
 </head>
 <body>
-  <img class="stars" src="./assets/stars.svg" alt="stars">
+  <img class="stars" src="./assets/home/stars.svg" alt="stars">
   <div class="planet planet__blue"></div>
   <div class="planet planet__orange"></div>
   <div class="planet planet__red"></div>
@@ -41,7 +41,7 @@
   </header>
   
   <section class="content-section">
-    <div class="hero">
+    <div class="hero active">
       <h5>Hello there I'm</h5>
       <h1>Leon Laade</h1>
       <p class="text-lg-light">I'm a web designer &<br>frontend developer from Germany.</p>
@@ -54,19 +54,21 @@
   </section>
   
   <section class="content-section">
-    <div class="hero">
+    <div class="hero active">
       <h5>Take a look at</h5>
-      <h1>My Portfolio</h1>
+      <h1>My<br>Portfolio</h1>
       <p class="text-lg-light">Some of the projects I developed<br>and contributed to over the last years.</p>
     </div>
     
     <div class="side-container">
-      <div class="side-container__content projects"></div>
+      <div class="side-container__content projects">
+        <div class="project-slider"></div>
+      </div>
     </div>
   </section>
   
   <section class="content-section">
-    <div class="hero">
+    <div class="hero active">
       <h5>Learn more</h5>
       <h1>About me</h1>
       <p class="text-lg-light">Some of the projects I developed<br>and contributed to over the last years.</p>
@@ -78,7 +80,7 @@
   </section>
   
   <section class="content-section">
-    <div class="hero">
+    <div class="hero active">
       <h5>Feel free to</h5>
       <h1>Contact</h1>
       <p class="text-lg-light">If you are interested in working<br>with me.</p>
