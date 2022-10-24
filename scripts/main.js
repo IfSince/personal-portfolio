@@ -9,16 +9,16 @@ const menuBtn = document.querySelector("#menu-icon");
 
 const projectSliderContainer = document.querySelector('.project-slider');
 const images = [
-    "./assets/home/projects/dabbing_astronaut.jpg",
-    "./assets/home/projects/figuring_out.jpg",
-    "./assets/home/projects/landed.jpg",
-    "./assets/home/projects/riding_rocket.jpg",
-    "./assets/home/projects/riding_rocket_peace.jpg",
-    "./assets/home/projects/trying_out.jpg",
+    { image: './assets/home/projects/dabbing_astronaut.jpg', description: 'Dabbing' },
+    { image: './assets/home/projects/figuring_out.jpg', description: 'Lorem Ipsum'},
+    { image: './assets/home/projects/landed.jpg', description: 'Landed' },
+    { image: './assets/home/projects/riding_rocket.jpg', description: 'Riding Rocket'},
+    { image: './assets/home/projects/riding_rocket_peace.jpg', description: 'Peace'},
+    { image: './assets/home/projects/trying_out.jpg', description: 'Trying out'},
 ];
 
 //Projects Slider
-new Slider(projectSliderContainer, images, 3000);
+new Slider(projectSliderContainer, images);
 
 //Contact Form Quest
 new Quest(contactForm, contactQuestSteps);
