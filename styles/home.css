@@ -1,19 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden scroll;
+  -ms-overflow-style: none;
+  background-color: var(--bg-dark);
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 /*===========================================================================================
         Background
 =============================================================================================*/
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: var(--bg-dark);
-  overflow: hidden;
-  overflow-y: visible;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .stars {
   --x: 0;
   --y: 0;
@@ -59,63 +59,10 @@ body {
   }
 }
 
-@keyframes planetAnimation {
-  0% {
-    border-radius: 50%;
-    opacity: 50%;
-  }
-
-  40% {
-    opacity: 100%;
-  }
-
-  100% {
-    border-radius: 0;
-    opacity: 100%;
-    top: var(--top-opened);
-    right: var(--right-opened);
-    bottom: var(--bottom-opened);
-    left: var(--left-opened);
-    width: var(--width-opened);
-    height: var(--height-opened);
-  }
-}
-
-@keyframes planetAnimationReverse {
-  0% {
-    border-radius: 0;
-    opacity: 100%;
-    top: var(--top-opened);
-    right: var(--right-opened);
-    bottom: var(--bottom-opened);
-    left: var(--left-opened);
-    width: var(--width-opened);
-    height: var(--height-opened);
-  }
-
-  60% {
-    opacity: 100%;
-  }
-
-  100% {
-    opacity: 50%;
-    top: var(--top-default);
-    right: var(--right-default);
-    bottom: var(--bottom-default);
-    left: var(--left-default);
-    width: var(--diameter);
-    height: var(--diameter);
-  }
-}
-
-/*===========================================================================================
-        About Me / Planet Blue
-=============================================================================================*/
 .planet__blue {
   --diameter: clamp(700vw, 800vw, 1000vw);
-  --top-default: max(-20vh, calc(-20vh + ((1200px - 100vw) * 0.15)));
-  --left-default: min(10vw, calc(-60vw + (100vw - 375px)));
-
+  --top-default: max(-20vh, calc(-20vh + ((75rem - 100vw) * 0.15)));
+  --left-default: min(10vw, calc(-60vw + (100vw - 23.5rem)));
   background-color: #363E59;
   min-width: 31.25rem;
   max-width: 47vw;
@@ -124,67 +71,66 @@ body {
   animation-duration: 0.8s;
 }
 
-/*===========================================================================================
-        Contact Me / Planet Orange
-=============================================================================================*/
 .planet__orange {
   --diameter: clamp(31.25rem, 60vw, 37.5rem);
   --top-default: -23.75rem;
   --right-default: -21.875rem;
-
   background-color: #D89D8F;
   animation-duration: 1s;
 }
 
-/*===========================================================================================
-        My Portfolio / Planet Red
-=============================================================================================*/
 .planet__red {
   --diameter: clamp(62.5rem, 150vw, 80rem);
-  --top-default: inherit;
   --right-default: -18.75rem;
   --bottom-default: -56.25rem;
-  --left-default: inherit;
-
   background-color: #A66A74;
   animation-duration: 1s;
   animation-delay: 0.2s;
-
-  --top-opened: inherit;
-  --right-opened: 0;
-  --bottom-opened: 0;
-  --left-opened: inherit;
-  --width-opened: 55vw;
-  --height-opened: 100%;
-}
-
-.planet__red.active {
-  animation: planetAnimation;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(.72,.04,.34,1.01);
-}
-
-.planet__red.unselect {
-  animation: planetAnimationReverse;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(.72,.04,.34,1.01);
 }
 
 /*===========================================================================================
-        Content Section
+        Layout
 =============================================================================================*/
-.content-section {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.layout {
+  width: 100%;
+  height: calc(100vh * 3);
   position: relative;
 }
 
-.content-section .hero {
+.layout section {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  transform: translateY(100vh);
+  transition: transform var(--time-animation) ease-in-out;
+  z-index: 0;
+}
+
+.layout .s1 {
+  transform: translateY(0);
+  z-index: 4;
+}
+
+.layout .s2 {
+  z-index: 3;
+}
+
+.layout .s3 {
+  z-index: 2;
+}
+
+.layout .s4 {
+  z-index: 1;
+}
+
+/*===========================================================================================
+        Hero
+=============================================================================================*/
+.hero {
   z-index: 2;
   margin: 0 var(--content-padding);
   width: fit-content;
@@ -192,154 +138,111 @@ body {
   overflow: hidden;
 }
 
-.hero *:not(.side-container) {
-  transform: translateX(-100%);
-}
-
 .hero.active * {
-  transform: translateX(0);
+  transform: translate(0, 0);
 }
 
 .hero h5 {
+  transform: translate(-100%, 0);
   transition: transform 1s cubic-bezier(.59,.24,.4,1);
   transition-delay: 0.6s;
 }
 
-.hero h1 {
+.hero h1, .hero h2 {
+  transform: translate(-100%, 0);
   transition: transform 0.8s cubic-bezier(.59,.24,.4,1);
   transition-delay: 0.6s;
 }
 
 .hero p {
+  transform: translate(-100%, 0);
   transition: transform 0.8s cubic-bezier(.59,.24,.4,1);
   transition-delay: 0.8s;
 }
 
 .hero button {
+  transform: translate(-200%, 0);
   transition: transform 0.8s cubic-bezier(.59,.24,.4,1);
-  transition-delay: 1s;
-}
-
-.content-section .side-container {
-  width: 60vw;
-  height: 100vh;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.side-container .side-container__content {
-  width: 100%;
-  height: 100%;
-  padding: 15vh 10%;
+  transition-delay: 0.8s;
 }
 
 /*===========================================================================================
-        Side-Content - Projects
+        Content General
 =============================================================================================*/
-.side-container .projects {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #A66A74;
-}
-
-.project-slider {
-  aspect-ratio: 1 / 1;
-  transform: scale(85%) translateX(10%);
-  transition: transform 0.75s cubic-bezier(.16,.16,.53,.99);
-  width: 100%;
-  max-width: 35vw;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-}
-
-.project-slider.active {
-  transform: scale(1) translateX(0);
-}
-
-.project-slider__btn {
-  position: relative;
-  height: 100%;
-  width: 20%;
-  min-width: 20px;
-  background: #363E59;
-  z-index: 10;
-  cursor: pointer;
-  background: rgba(54, 62, 89, 0);
-  opacity: 0;
-  transition: 0.3s ease-in-out;
-}
-
-.project-slider__btn.disabled {
-  display: none;
-}
-
-.project-slider__btn.prev:hover {
-  opacity: 1;
-  background: linear-gradient(90deg, #363E59 0%, rgba(160,166,172,0) 100%);
-}
-
-.project-slider__btn.next:hover {
-  opacity: 1;
-  background: linear-gradient(-90deg, #363E59 0%, rgba(160, 166, 172, 0) 100%);
-}
-
-.project-slider__img {
+.projects, .about-me, .contact {
   position: absolute;
-  width: 100%;
-  height: auto;
+  right: 0;
   top: 0;
-  left: 0;
-  object-fit: cover;
-  display: block;
-  cursor: pointer;
-}
-
-.project-slider__description-container {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  height: auto;
-  overflow:hidden;
-  transform: translate(15%, 10%);
-}
-
-.project-slider__description {
-  transform: translateY(150%);
-  transition: transform 1s cubic-bezier(.72,.04,.34,1.01) 0.4s;
-}
-
-.project-slider.active .project-slider__description {
-  transform: translateY(0);
-}
-
-/*===========================================================================================
-        Side-Content - About
-=============================================================================================*/
-.side-container .about {
-  background: var(--darkblue);
-}
-
-/*===========================================================================================
-        Side-Content - Contact
-=============================================================================================*/
-.side-container .contact {
-  background: var(--orange);
-
-  padding: 15vh 10%;
+  width: 55vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 8.75rem var(--content-padding) 8.75rem 4.5rem;
 }
 
+.projects__content, .about-me__content, .contact__content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  max-width: 60vw;
+}
+
+.projects {
+  /*background-color: var(--clr-primary);*/
+}
+
+.projects__content {
+  /*background-color: var(--darkblue);*/
+  background-color: var(--clr-primary);
+}
+
+.about-me {
+  /*background-color: var(--darkblue);*/
+}
+
+.about-me__content {
+  /*background-color: var(--clr-primary);*/
+  background-color: var(--darkblue);
+
+}
+
+.contact {
+  /*background-color: var(--orange);*/
+}
+
+.contact__content {
+  /*background-color: var(--darkblue);*/
+  background-color: var(--orange);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3.25rem;
+}
+
+/*===========================================================================================
+        Projects
+=============================================================================================*/
+.projects__count {
+  position: absolute;
+  bottom: 0.15em;
+  right: 0;
+  font-weight: 500;
+  font-size: clamp(3.375rem, 10vw, 7.563rem);
+}
+
+/*===========================================================================================
+        Contact Form
+=============================================================================================*/
 .quest {
   width: 100%;
-  max-width: 715px;
+  height: 100%;
+  max-width: 25rem;
+  margin: 3.5rem 0 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .quest__progress {
@@ -348,67 +251,43 @@ body {
 }
 
 .quest__progress-btn {
-  transition-property: all;
-  transition-duration: .15s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
+  --dot-diameter: 0.875rem;
 
   position: relative;
-  padding-top: 20px;
+  padding-top: 1.25rem;
   color: rgba(108, 117, 125, 0.7);
-  text-indent: -9999px;
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: 16px;
+  transition: all .15s linear 0s;
 }
 
 .quest__progress-btn::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 50%;
-  right: unset;
-  bottom: unset;
-
-  display: block;
-  width: 13px;
-  height: 13px;
-
-  content: '';
-
+  width: var(--dot-diameter);
+  aspect-ratio: 1 / 1;
   transform: translateX(-50%);
-
   transition: all .15s linear 0s,
   transform .15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
-
-  border: 2px solid currentColor;
+  border: 0.125rem solid currentColor;
   border-radius: 50%;
   background-color: #fff;
-
   box-sizing: border-box;
-
   z-index: 3;
 }
 
 .quest__progress-btn::after {
-  position: absolute;
-  top: 5px;
-  left: calc(-50% - 13px / 2);
-  right: unset;
-  bottom: unset;
-  transition-property: all;
-  transition-duration: .15s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
-
-  display: block;
-  width: 100%;
-  height: 2px;
-
   content: '';
-
+  position: absolute;
+  top: 0.313rem;
+  left: calc(-50% - var(--dot-diameter) / 2);
+  transition: all .15s linear 0s;
+  width: 100%;
+  height: 0.125rem;
   background-color: currentColor;
-
   z-index: 1;
 }
 
@@ -420,96 +299,153 @@ body {
   color: var(--clr-primary);
 }
 
+.quest__progress-btn.active:before {
+  transform: translateX(-50%) scale(1.2);
+  background-color: currentColor;
+}
+
 .quest__progress-btn.error {
   color: var(--error);
 }
 
-.quest__progress-btn.active:before {
-  transform: translateX(-50%) scale(1.2);
-
-  background-color: currentColor;
-}
-
-@media (min-width: 500px) {
-  .quest__progress-btn {
-    text-indent: 0;
-  }
-}
-
 .quest__form {
-  position: relative;
+  width: 100%;
 }
 
 .quest__panel {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
   opacity: 0;
   visibility: hidden;
+  height: 0;
 }
 
 .quest__panel.active {
-  height: auto;
+  height: 100%;
   opacity: 1;
   visibility: visible;
 }
-/*===========================================================================================
-        Scroll Down CTA
-=============================================================================================*/
-.scroll-down {
-  width: 12.5rem;
-  height: 2.25rem;
-  text-transform: uppercase;
+
+.btn-row {
   display: flex;
-  align-items: center;
   justify-content: flex-end;
-  position: absolute;
-  bottom: var(--content-padding);
-  left: 0;
-  gap: 0.5rem;
-  cursor: pointer;
+  gap: 1.625rem;
+  height: 3.25rem;
 }
 
-.scroll-down span {
+.btn-row .btn {
+  width: 50%;
+  padding: 0;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/*===========================================================================================
+        Side Nav
+=============================================================================================*/
+ul.side-nav {
+  position: fixed;
+  right: 2.5rem;
+  top: 50%;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 2.25rem;
+  transform: translateY(-50%);
+}
+
+.side-nav li {
   position: relative;
+  width: 1.625rem;
+  border: 0.094rem solid white;
+  background-color: white;
+  transition: 0.3s;
 }
 
-.scroll-down__background {
-  position: absolute;
-  width: 150%;
-  height: 100%;
-  background-color: var(--clr-primary);
-  transition: 500ms cubic-bezier(.59,.24,.4,1);
-  transform: translateX(-3.375rem);
-}
-
-.scroll-down:hover .scroll-down__background {
-  transform: translateX(1.25rem);
+.side-nav li.active {
+  width: 2.5rem;
 }
 
 /*===========================================================================================
         Media Queries
 =============================================================================================*/
 @media screen and (max-width: 1000px) {
-  .content-section {
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    padding-bottom: var(--content-padding);
+  /*************** Layout ***************/
+  .layout section {
+    align-items: flex-end;
+    padding-bottom: 5.625rem;
   }
 
-  .content-section .side-container {
-    position: unset;
+  /*************** General Content ***************/
+  .projects, .about-me, .contact {
     width: 100%;
-    height: 100%;
+    height: 65vh;
+    padding: 5rem calc(var(--content-padding) + 1rem) 3.5rem;
   }
 
-  .side-container .side-container__content {
-    padding: 8vh 20vw 5vh;
+  /*************** Contact Me / Quest ***************/
+  .quest {
+    margin: 0.75rem 0 0 0;
   }
 
-  .project-slider {
-    max-width: 715px;
+  .quest__progress-btn {
+    font-size: 0.75rem;
+    --dot-diameter: 0.625rem;
+  }
+
+  .quest__panel {
+    gap: 1rem;
+  }
+
+  .btn-row {
+    gap: 0.75rem;
+    height: 2rem;
+  }
+
+  .btn-row .btn {
+    font-size: 0.75rem;
+  }
+
+  /*************** Side Nav ***************/
+  ul.side-nav {
+    top: unset;
+    bottom: 1.25rem;
+    right: 50%;
+    flex-direction: row;
+    transform: translateX(50%);
+  }
+
+  .side-nav li {
+    width: unset;
+    height: 1.25rem;
+  }
+
+  .side-nav li.active {
+    width: unset;
+    height: 2.25rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  body::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+    -webkit-appearance: none;
+  }
+
+  /*************** Content General ***************/
+  .projects, .about-me, .contact {
+    width: 100%;
+    height: 65vh;
+    padding: 4.125rem calc(var(--content-padding) + 1rem) 3.5rem;
+  }
+
+  /*************** Content General ***************/
+  .projects__content, .about-me__content, .contact__content {
+    max-width: unset;
   }
 }

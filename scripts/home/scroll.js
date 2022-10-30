@@ -1,56 +1,76 @@
-export class ContentSlider {
-    currentIndex = null;
+const TIME_OUT = 600 // It should be the same transition time of the sections
+const body = document.querySelector('body')
+const sectionsQty = document.querySelectorAll('section').length
+const sideNav = document.querySelector('.side-nav')
+const sideNavEntries = sideNav.querySelectorAll('li')
 
-    constructor(elements, childClass) {
-        this.elements = elements;
-        this.childClass = childClass;
+let startFlag = true
+let initialScroll = window.scrollY
+let qty = 1
+let main = null
+let next = null
 
-        this.scrollToIndex(0);
-    }
 
-    scrollInDirection(direction = "down") {
-        let newIndex;
+// Listening to scroll event
+window.onscroll = () => {
+    if (startFlag) {
+        const scrollDown = this.scrollY >= initialScroll
+        const scrollLimit = qty >= 1 && qty <= sectionsQty
 
-        if (direction === "up") {
-            newIndex = this.currentIndex -1 < 0 ? 0 : this.currentIndex -1;
-        } else {
-            newIndex = this.currentIndex +1 >= this.elements.length ? this.currentIndex : this.currentIndex +1;
+        // Verify that the scroll does not exceed the number of sections
+        if (scrollLimit) {
+            body.style.overflowY = 'hidden' // Lock el scroll
+
+            if (scrollDown && qty < sectionsQty) {
+                main = document.querySelector(`section.s${qty}`)
+                next = document.querySelector(`section.s${qty + 1}`)
+
+                main.style.transform = 'translateY(-100vh)'
+                next.style.transform = 'translateY(0)'
+
+                qty++
+            } else if (!scrollDown && qty > 1) {
+                main = document.querySelector(`section.s${qty - 1}`)
+                next = document.querySelector(`section.s${qty}`)
+
+                main.style.transform = 'translateY(0)'
+                next.style.transform = 'translateY(100vh)'
+
+                qty--
+            }
+
+            // Side nav
+            sideNavEntries.forEach((entry) => {
+                entry.classList.remove('active');
+            })
+            sideNavEntries[qty-1].classList.add('active');
         }
 
-        if (newIndex !== this.currentIndex) {
-            const currentElement = this.elements[this.currentIndex];
-            const nextElement = this.elements[newIndex];
+        // Wait for the scrolling to finish to reset the values
+        setTimeout(() => {
+            initialScroll = this.scrollY
+            startFlag = true
+            body.style.overflowY = 'scroll' // Unlock scroll
+        }, TIME_OUT)
 
-            this.handleScrolling(currentElement, nextElement, newIndex);
-            this.currentIndex = newIndex;
-        }
+        startFlag = false
     }
 
-    scrollToIndex(index) {
-        if (index !== this.currentIndex) {
-            const currentElement = this.elements[this.currentIndex];
-            const nextElement = this.elements[index];
-
-            this.handleScrolling(currentElement, nextElement, index);
-            this.currentIndex = index;
-        }
-    }
-
-    handleScrolling(currentContainer, nextContainer, index) {
-        const currentHero = currentContainer?.querySelector(`.${this.childClass}`);
-        const nextHero = nextContainer.querySelector(`.${this.childClass}`);
-
-        const currentFeature = currentContainer?.querySelector(".side-container")?.querySelector(".side-container__content");
-        const nextFeature = nextContainer.querySelector(".side-container")?.querySelector(".side-container__content");
-        if (currentHero !== nextHero) {
-            currentHero?.classList.remove("active");
-            nextHero.classList.add("active");
-
-            currentFeature?.classList.remove("active");
-            nextFeature?.classList.add("active");
-
-            nextContainer.scrollIntoView({block: "center", inline: "center"});
-        }
-    }
-
+    // Keep scrollbar in the middle of the viewport
+    window.scroll(0, window.screen.height)
 }
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        } else {
+            entry.target.classList.remove("active");
+        }
+    });
+})
+
+document.querySelectorAll('.hero').forEach((section) => {
+    observer.observe(section);
+})
+

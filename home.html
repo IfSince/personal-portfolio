@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Leon Laade - Webdesign & Development</title>
+  
+    <link rel="stylesheet" href="https://use.typekit.net/hbp1ubp.css"> <!-- Adobe Font-->
+    <link rel="stylesheet" type="text/css" href="./styles/shared/reset.css">
+    <link rel="stylesheet" href="styles/shared/style.css" />
+    <link rel="stylesheet" href="styles/home.css" />
+
+    <script src="scripts/home/scroll.js" defer></script>
+    <script src="scripts/main.js" type="module" defer></script>
+  </head>
+  <body>
+    <img class="stars" src="./assets/home/stars.svg" alt="stars">
+    <div class="planet planet__blue"></div>
+    <div class="planet planet__orange"></div>
+    <div class="planet planet__red"></div>
+  
+    <header>
+      <a href="./home.html" class="logo">Leon Laade</a>
+      <button class="mobile-only" id="menu-icon">
+        <svg>
+          <rect fill="#E2E2E2" height="3" width="35" x="0" y="4"></rect>
+          <rect fill="#E2E2E2" height="3" width="20" x="0" y="15"></rect>
+          <rect fill="#E2E2E2" height="3" width="27" x="0" y="25.5"></rect>
+        </svg>
+      </button>
+      <nav>
+        <ul class="text-xs-bold">
+          <li><a class="nav-element" href="#">Home</a></li>
+          <li><a class="nav-element" href="#">My Portfolio</a></li>
+          <li><a class="nav-element" href="#">About Me</a></li>
+          <li><a class="nav-element" href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div class="layout">
+      <section class="s1">
+        <div class="hero">
+          <h5>Hello there I'm</h5>
+          <h1>Leon Laade</h1>
+          <p class="text-lg-light">I'm a web designer &<br>frontend developer from Germany.</p>
+        </div>
+      </section>
+      
+      <section class="s2">
+        <div class="hero">
+          <h5>Take a look at</h5>
+          <h2>My<br>Portfolio</h2>
+          <p class="text-lg-light">Some of the projects I developed<br>and contributed to over the last years.</p>
+          <button class="btn btn-primary">Show me more</button>
+        </div>
+        <div class="projects">
+          <div class="projects__content">
+            <span class="projects__count">01</span>
+          </div>
+        </div>
+      </section>
+      
+      <section class="s3">
+        <div class="hero">
+          <h5>Learn more</h5>
+          <h2>About me</h2>
+          <p class="text-lg-light">Lorem ipsum dolor sit<br>and contributed to over the last years.</p>
+        </div>
+        <div class="about-me">
+          <div class="about-me__content">
+          </div>
+        </div>
+      </section>
+      
+      <section class="s4">
+        <div class="hero">
+          <h5>Feel free to</h5>
+          <h2>Contact</h2>
+          <p class="text-lg-light">If you are interested in working<br>with me.</p>
+        </div>
+        <div class="contact">
+          <div class="contact__content">
+            <div class="quest" id="contactForm">
+              <div class="quest__progress"></div>
+              <form action="" class="quest__form">
+                <div class="quest__panel active" id="personalStep">
+                  <div>
+                    <label for="salutation">Salutation</label>
+                    <select id="salutation" class="form-control">
+                      <option value="Mr" selected>Mr</option>
+                      <option value="Mrs">Mrs</option>
+                      <option value="Mx">Mx</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="firstName">First name</label>
+                    <input class="form-control" type="text" id="firstName">
+                  </div>
+                  <div>
+                    <label for="surname">Surname</label>
+                    <input class="form-control" type="text" id="surname">
+                  </div>
+  
+                  <div class="btn-row">
+                    <button class="btn btn-primary" type="button" data-btn-type="next">Next</button>
+                  </div>
+                </div>
+  
+                <div class="quest__panel" id="addressStep">
+                  <div>
+                    <label for="street">Street</label>
+                    <input class="form-control" type="text" id="street">
+                  </div>
+                  <div>
+                    <label for="houseNr">House nr.</label>
+                    <input class="form-control" type="text" id="houseNr">
+                  </div>
+                  <div>
+                    <label for="zip">ZIP</label>
+                    <input class="form-control" type="text" id="zip">
+                  </div>
+                  <div>
+                    <label for="city">City</label>
+                    <input class="form-control" type="text" id="city">
+                  </div>
+  
+                  <div class="btn-row">
+                    <button class="btn btn-primary" type="button" data-btn-type="prev">Previous</button>
+                    <button class="btn btn-primary" type="button" data-btn-type="next">Next</button>
+                  </div>
+                </div>
+  
+                <div class="quest__panel" id="messageStep">
+                  <div>
+                    <label for="email">Email</label>
+                    <input class="form-control" type="text" id="email">
+                  </div>
+                  <div>
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message"></textarea>
+                  </div>
+  
+                  <div class="btn-row">
+                    <button class="btn btn-primary" type="button" data-btn-type="prev">Previous</button>
+                    <button class="btn btn-primary" type="button" data-btn-type="submit">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+    
+          </div>
+        </div>
+      </section>
+      
+      <ul class="side-nav">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </body>
+</html>

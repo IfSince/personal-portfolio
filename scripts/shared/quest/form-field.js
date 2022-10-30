@@ -69,37 +69,37 @@ export class FormField {
 
     validateMandatory(key) {
         if (this.validations[key] && !this.value) {
-            this.errors.push("Das Feld ist ein Pflichtfeld.");
+            this.errors = [...this.errors, "Das Feld ist ein Pflichtfeld."];
         }
     }
 
     validateMinLength(key) {
         if (this.value?.length > 0 && this.validations[key] > this.value?.length) {
-            this.errors.push(`Das Feld muss mindestens ${this.validations[key]} Zeichen lang sein.`);
+            this.errors = [...this.errors, `Das Feld muss mindestens ${this.validations[key]} Zeichen lang sein.`];
         }
     }
 
     validateMaxLength(key) {
         if (this.validations[key] < this.value?.length) {
-            this.errors.push(`Das Feld darf maximal ${this.validations[key]} Zeichen lang sein.`);
+            this.errors = [...this.errors, `Das Feld darf maximal ${this.validations[key]} Zeichen lang sein.`];
         }
     }
 
     validateTextOnly() {
         if (this.value?.length > 0 && !/^[a-zA-Z]+$/g.test(this.value)) {
-            this.errors.push("Das Feld darf nur Buchstaben beinhalten.");
+            this.errors = [...this.errors, "Das Feld darf nur Buchstaben beinhalten."];
         }
     }
 
     validateNumbersOnly() {
-        if (!/\d+/.test(this.value)) {
-            this.errors.push("Das Feld darf nur Zahlen beinhalten.");
+        if (this.value?.length > 0 && !/\d+/.test(this.value)) {
+            this.errors = [...this.errors, "Das Feld darf nur Zahlen beinhalten."];
         }
     }
 
     validateIsEmail() {
         if (!/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-z]+)$/.test(this.value)) {
-            this.errors.push("Bitte geben Sie eine gültige E-Mail ein.");
+            this.errors = [...this.errors, "Bitte geben Sie eine gültige E-Mail ein."];
         }
     }
 
@@ -109,12 +109,14 @@ export class FormField {
     writeValidationResult() {
         let errorList = this.domElement.nextElementSibling;
         errorList.innerHTML = null;
+        this.domElement.style.border = null;
 
         if (!this.isValid) {
             this.errors.forEach((error) => {
                 const element = createDomElement("li", error);
                 errorList.appendChild(element);
             });
+            this.domElement.style.border = "1px solid red";
         }
     }
 
