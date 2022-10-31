@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: var(--bg-dark);
+}
+
 :root {
   --bg-dark: #02070D;
   --darkgray: #071226;
@@ -9,8 +13,10 @@
   --clr-primary: #A66A74;
   --clr-primary-hover: #86565e;
   --orange: #D99D8F;
+
   --txt-primary: #FFFFFF;
   --txt-default: #E2E2E2;
+  --txt-gray: #92949A;
 
   --error: #e33333;
 
@@ -30,7 +36,7 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3 {
+h1, h2 {
   font-weight: 500;
   font-size: clamp(2.875rem, 10vw, 7.563rem);
   letter-spacing: 0.06em;
@@ -41,17 +47,7 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
-}
-
-h3 {
-  font-size: 6rem;
-}
-
-h1::after, h2::after {
-  content: '';
-  width: 60%;
-  height: 0.07em;
-  background-color: var(--clr-primary);
+  height: fit-content;
 }
 
 h4 {

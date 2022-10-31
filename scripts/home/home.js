@@ -1,7 +1,7 @@
-import {createMenuEventListener} from './shared/create-menu-event-listener.js';
-import {starTransition} from './home/star-transition.js';
-import {Quest} from './shared/quest/quest.js';
-import {contactForm, contactQuestSteps} from './home/contact-quest.js';
+import {createMenuEventListener} from '../shared/create-menu-event-listener.js';
+import {starTransition} from './star-transition.js';
+import {Quest} from '../shared/quest/quest.js';
+import {contactForm, contactQuestSteps} from './contact-quest.js';
 
 const starBackground = document.querySelector('.stars');
 const menuBtn = document.querySelector("#menu-icon");
