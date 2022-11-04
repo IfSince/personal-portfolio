@@ -212,7 +212,6 @@ h1, h2 {
 .card-image {
   width: 8rem;
   aspect-ratio: 1 / 1;
-  border: 0.063rem solid var(--clr-primary);
   margin-bottom: 2rem;
 }
 
