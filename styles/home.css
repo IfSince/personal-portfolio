@@ -10,11 +10,49 @@ body::-webkit-scrollbar {
 /*===========================================================================================
         Fonts
 =============================================================================================*/
+h1, h2 {
+  font-weight: 500;
+  font-size: clamp(2.875rem, 10vw, 7.563rem);
+  letter-spacing: 0.06em;
+  color: var(--txt-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.35em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  height: fit-content;
+  line-height: 1;
+}
+
 h1::after, h2::after {
   content: '';
   width: 60%;
   height: 0.07em;
   background-color: var(--clr-primary);
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-weight: 500;
+  font-size: clamp(0.75rem, 2.5vw, 1.5rem);
+  letter-spacing: 0.15em;
+  line-height: 1.292;
+  text-transform: uppercase;
+  color: var(--clr-primary);
+}
+
+p {
+  font-weight: 300;
+  font-size: clamp(1.125rem, 3vw, 2rem);
+  letter-spacing: 0.028em;
+  line-height: 1.278;
+  word-wrap: unset;
+  white-space: unset;
+  color: var(--txt-default);
 }
 
 /*===========================================================================================

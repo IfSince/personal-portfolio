@@ -12,5 +12,9 @@ new Quest(contactForm, contactQuestSteps);
 createMenuEventListener(menuBtn);
 
 document.body.addEventListener("mousemove", (e) => {
+    const { clientX, clientY } = e;
+    const x = clientX / window.innerWidth;
+    const y = clientY / window.innerHeight;
+
     starTransition(starBackground, e.pageX, e.pageY, 0.005);
 });

@@ -14,7 +14,6 @@
   <script src="scripts/about/about.js" type="module" defer></script>
 </head>
 <body>
-  
   <header>
     <a href="./home.html" class="logo">Leon Laade</a>
     <button class="mobile-only" id="menu-icon">
@@ -25,7 +24,7 @@
       </svg>
     </button>
     <nav>
-      <ul class="text-xs-bold">
+      <ul>
         <li><a class="nav-element" href="#">Home</a></li>
         <li><a class="nav-element" href="#">My Portfolio</a></li>
         <li><a class="nav-element" href="#">About Me</a></li>
@@ -34,83 +33,91 @@
     </nav>
   </header>
   
-  <section class="hero">
-    <div class="hero__image"></div>
-    <div class="hero__image"></div>
-    <div class="hero__image"></div>
-  </section>
+  <div class="wrapper">
+    <img class="stars" src="./assets/home/stars.svg" alt="stars">
+    <div class="planet"></div>
   
-  <section class="about-me content-section">
-    <div class="about-me__text">
-      <h1>About Me</h1>
-      <p class="text-lg-light">My name is Leon Laade and I'm a full-stack developer from Germany.</p>
-      <p class="text-lg-light">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, </p>
-    </div>
-    <div class="about-me__image-container">
-      <div class="about-me__image"></div>
-    </div>
-  </section>
+    <section class="hero">
+      <div class="hero__image"></div>
+      <div class="hero__image"></div>
+      <div class="hero__image"></div>
+    </section>
   
-  <section class="experience content-section">
-    <h2>Experience</h2>
-    <div class="experience-list">
-      <div class="experience-list__card">
-        <div class="card-image"></div>
-        <h3>Lorem Ipsum</h3>
-        <p>I'm a 22-year-old full-stack developer from Hamburg, Germany. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
+    <section class="about-me content-section">
+      <div>
+        <h1>About Me</h1>
+        <p class="sub-header">My name is Leon Laade, and I'm a full-stack developer from Germany.</p>
+        <p class="sub-header">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, </p>
       </div>
-      <div class="experience-list__card">
-        <div class="card-image"></div>
-        <h3>Lorem</h3>
-        <p>I'm a 22-year-old full-stack developer from Hamburg, Germany. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
-      </div>
-      <div class="experience-list__card">
-        <div class="card-image"></div>
-        <h3>Lorem</h3>
-        <p>I'm a 22-year-old full-stack developer from Hamburg, Germany. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
-      </div>
-    </div>
-  </section>
-  
-  <section class="blog content-section">
-    <h2>Blog</h2>
-    <div class="blog__content">
-      <div class="blog__description">
-        <div class="blog__description-icon"><span>B</span></div>
-        <p class="text-lg-light">Frontend & back-end expertise from development to delivery</p>
-        <button class="btn btn-primary">View more</button>
-      </div>
-      <div class="blog__posts">
-        <div class="blog-post">
-          <div class="blog-post__image"></div>
-          <div class="blog-post__text">
-            <p class="category">Design</p>
-            <p class="title">UX Flow - Complete Guide to User Flow in UX Design</p>
-          </div>
-        </div>
-  
-        <div class="blog-post">
-          <div class="blog-post__image"></div>
-          <div class="blog-post__text">
-            <p class="category">Design</p>
-            <p class="title">UX Flow - Complete Guide to User Flow in UX Design</p>
-          </div>
-        </div>
-  
-        <div class="blog-post">
-          <div class="blog-post__image"></div>
-          <div class="blog-post__text">
-            <p class="category">Design</p>
-            <p class="title">UX Flow - Complete Guide to User Flow in UX Design</p>
-          </div>
+      <div class="about-me__image-container">
+        <div class="about-me__image">
+          <img src="./assets/about-me/about-me.jpg" alt="Picture of myself">
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   
-  <section class="socials content-section">
-    <h2>Socials</h2>
-  </section>
-
+    <section class="experience content-section">
+      <h2>Experience</h2>
+      <div class="experience-list">
+        <div class="experience-list__card">
+          <div class="card-image"></div>
+          <h3>Lorem Ipsum</h3>
+          <p>I'm a 22-year-old full-stack developer from Hamburg, Germany. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
+        </div>
+        <div class="experience-list__card">
+          <div class="card-image">
+            <img src="assets/about-me/rocket.png" alt="Picture of rocket">
+          </div>
+          <h3>Development</h3>
+          <p>I'm a 22-year-old full-stack developer from Hamburg, Germany. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
+        </div>
+        <div class="experience-list__card">
+          <div class="card-image"></div>
+          <h3>Lorem</h3>
+          <p>I'm a 22-year-old full-stack developer from Hamburg, Germany. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
+        </div>
+      </div>
+  
+    </section>
+    <section class="blog content-section">
+      <h2>Blog</h2>
+      <div class="blog__content">
+        <div class="blog__description">
+          <div class="blog__description-icon"><span>B</span></div>
+          <p class="sub-header">Frontend & back-end expertise from development to delivery</p>
+          <button class="btn btn-primary">View more</button>
+        </div>
+        <div class="blog__posts">
+          <div class="blog-post">
+            <div class="blog-post__image"></div>
+            <div class="blog-post__text">
+              <p class="blog-category">Design</p>
+              <h3 class="blog-header">UX Flow - Complete Guide to User Flow in UX Design</h3>
+            </div>
+          </div>
+        
+          <div class="blog-post">
+            <div class="blog-post__image"></div>
+            <div class="blog-post__text">
+              <p class="blog-category">Design</p>
+              <h3 class="blog-header">UX Flow - Complete Guide to User Flow in UX Design</h3>
+            </div>
+          </div>
+        
+          <div class="blog-post">
+            <div class="blog-post__image"></div>
+            <div class="blog-post__text">
+              <p class="blog-category">Design</p>
+              <h3 class="blog-header">UX Flow - Complete Guide to User Flow in UX Design</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="socials content-section">
+      <h2>Socials</h2>
+    </section>
+  </div>
 </body>
 </html>
