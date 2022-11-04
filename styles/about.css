@@ -9,6 +9,30 @@ body {
 }
 
 /*===========================================================================================
+        Scroll Animation
+=============================================================================================*/
+.delay-02 {
+  transition-delay: 0.2s !important;
+}
+
+.delay-04 {
+  transition-delay: 0.4s !important;
+}
+
+.fade-in__bottom {
+  transition: transform 1.4s cubic-bezier(.18,.57,.18,1), opacity 2s ease;
+
+  transform: translate(0, 80px);
+  opacity: 0;
+}
+
+.fade-in__bottom.visible {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+
+/*===========================================================================================
         Fonts
 =============================================================================================*/
 h1::before, h2::before {
@@ -125,7 +149,7 @@ h1, h2 {
 
 .content-section {
   display: flex;
-  margin: 0 var(--about-padding) clamp(9.375rem, 20vw, 26.25rem);
+  margin: 0 var(--about-padding) clamp(9.375rem, 20vw, 20rem);
 }
 
 /*===========================================================================================
@@ -187,21 +211,6 @@ h1, h2 {
   align-items: center;
   max-width: 22rem;
   text-align: center;
-
-  transform: translateY(40%);
-  opacity: 0;
-  transition: 0.6s ease-in-out;
-  transition-delay: 0.2s;
-}
-
-.experience-list__card:first-child {
-  transition: 0.6s ease-in-out;
-  transition-delay: 0s;
-}
-
-.experience-list__card:last-child {
-  transition: 0.6s ease-in-out;
-  transition-delay: 0.4s;
 }
 
 .experience-list__card.active {
