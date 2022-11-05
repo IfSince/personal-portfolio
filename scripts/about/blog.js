@@ -1,7 +1,7 @@
 import {createDomElement} from '../util/createDomElement.js';
 
 async function loadPosts() {
-    const response = await fetch('assets/server234.json')
+    const response = await fetch('assets/server.json')
     if (!response.ok) {
         const message = `The data could not be loaded. Status received: ${response.status}`;
         throw new Error(message);
@@ -30,15 +30,12 @@ async function createBlogPost(posts, observer) {
     posts.forEach((post) => createBlogPostElement(post, observer));
 }
 
-async function createBlogPostElement(postData, observer, maxLength = 150) {
-    const { name, imgUrl, content } = postData;
-    const blogPostHTML = await fetch("../../components/blog.html").then((response) => response.text());
-    const element = createDomElement('div', null, ['blog-post', 'fade-in__bottom']);
-    element.innerHTML = blogPostHTML;
-
-    element.querySelector(".blog-category").innerHTML = name;
-    element.querySelector(".blog-header").innerHTML = content.slice(0, maxLength) + "…";
-    element.querySelector("img")?.setAttribute("src", imgUrl);
+function createBlogPostElement(postData, observer, maxLength = 150) {
+    const { imgUrl, name, content } = postData;
+    const element = createDomElement("blog-post", null, ["fade-in__bottom"]);
+    element.setAttribute("imgUrl", imgUrl);
+    element.setAttribute("name", name);
+    element.setAttribute("content", content.slice(0, maxLength) + "…");
 
     document.querySelector('.blog__posts').appendChild(element);
     observer.observe(element);

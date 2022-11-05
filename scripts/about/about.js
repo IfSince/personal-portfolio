@@ -1,5 +1,6 @@
 import {createMenuEventListener} from '../shared/create-menu-event-listener.js';
 import {initBlog} from './blog.js';
+import '../components/blogPost.js';
 
 const menuBtn = document.querySelector("#menu-icon");
 
