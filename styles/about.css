@@ -9,30 +9,6 @@ body {
 }
 
 /*===========================================================================================
-        Scroll Animation
-=============================================================================================*/
-.delay-02 {
-  transition-delay: 0.2s !important;
-}
-
-.delay-04 {
-  transition-delay: 0.4s !important;
-}
-
-.fade-in__bottom {
-  transition: transform 1.4s cubic-bezier(.18,.57,.18,1), opacity 2s ease;
-
-  transform: translate(0, 80px);
-  opacity: 0;
-}
-
-.fade-in__bottom.visible {
-  transform: translate(0, 0);
-  opacity: 1;
-}
-
-
-/*===========================================================================================
         Fonts
 =============================================================================================*/
 h1::before, h2::before {
@@ -58,31 +34,28 @@ h1, h2 {
   perspective: 0.625rem;
 }
 
-.planet {
+.stars, .planet, .planet2 {
   position: absolute;
+  z-index: -1;
+  user-select: none;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.planet {
   top: 0;
   transform: translate(300vw, 200vh) translateZ(-4.375rem) scale(5);
-  object-fit: cover;
-  z-index: -1;
-
-  background-color: var(--darkblue);
   aspect-ratio: 1 / 1;
-  width: 100vw;
-
-  border-radius: 50%;
+  width: max(150vh, 100vw);
+  opacity: 40%;
 }
 
 .stars {
-  position: absolute;
   top: 200vh;
   transform: translateZ(-2rem) scale(4);
   object-fit: cover;
-  overflow: visible;
   width: 100vw;
   height: 100vh;
-  user-select: none;
-  pointer-events: none;
-  z-index: -1;
 }
 
 /*===========================================================================================
@@ -290,14 +263,15 @@ h1, h2 {
   cursor: pointer;
 }
 
-.blog-post:last-child {
-  border-bottom: none;
-}
-
 .blog-post__image {
   width: 12.5rem;
   height: 8.5rem;
-  background-color: white;
+}
+
+.blog-post__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .blog-post__text {

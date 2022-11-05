@@ -1,4 +1,5 @@
 import {createMenuEventListener} from '../shared/create-menu-event-listener.js';
+import {initBlog} from './blog.js';
 
 const menuBtn = document.querySelector("#menu-icon");
 
@@ -17,7 +18,6 @@ document.querySelectorAll('.experience-list__card').forEach((card) => {
 })
 
 
-
 const fadeInBottomObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
        if (entry.isIntersecting) {
@@ -26,6 +26,9 @@ const fadeInBottomObserver = new IntersectionObserver((entries) => {
     });
 });
 
-document.querySelectorAll('.fade-in__bottom').forEach((element) => {
+document.querySelectorAll('[class*=fade-in]').forEach((element) => {
     fadeInBottomObserver.observe(element);
 });
+
+// Load and create Blogposts
+initBlog(fadeInBottomObserver)
