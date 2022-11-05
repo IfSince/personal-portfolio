@@ -1,89 +1,51 @@
 import {createDomElement} from '../util/createDomElement.js';
 
-const blogContainer = document.querySelector('.blog__posts');
-
 async function loadPosts() {
-    const response = await fetch('assets/server.json')
-
+    const response = await fetch('assets/server234.json')
     if (!response.ok) {
         const message = `The data could not be loaded. Status received: ${response.status}`;
         throw new Error(message);
     }
-
     return response.json();
+}
+
+async function handleError(error, observer) {
+    const errorPostData = {
+        name: 'Nothing to see here.',
+        imgUrl: '../../assets/shared-icons/error.svg',
+        content: error.toString()
+    }
+    await createBlogPostElement(errorPostData, observer)
 }
 
 async function createBlogPost(posts, observer) {
     if (posts.length === 0) {
-        const blogPost = createDomElement('div', null, ['blog-post', 'fade-in__bottom']);
-
-        const blogPostImageContainer = createDomElement('div', null, ['blog-post__image']);
-        const blogPostImg = createDomElement('img');
-        blogPostImg.setAttribute('src', '../../assets/nothing-found.svg');
-        blogPostImageContainer.appendChild(blogPostImg)
-
-        const blogPostText = createDomElement('div', null, ['blog-post__text']);
-        const blogCategory = createDomElement('p', 'Nothing to see here…', ['blog-category']);
-        const blogHeader = createDomElement('h3', 'No blogs have been uploaded yet.', ['blog-header']);
-        blogPostText.appendChild(blogCategory)
-        blogPostText.appendChild(blogHeader)
-
-        blogPost.appendChild(blogPostImageContainer);
-        blogPost.appendChild(blogPostText);
-
-        blogContainer.appendChild(blogPost);
-        observer.observe(blogPost);
+        const placeHolderPostData = {
+            name: 'Nothing to see here.',
+            imgUrl: '../../assets/shared-icons/nothing-found.svg',
+            content: 'No blogs have been uploaded yet'
+        }
+        await createBlogPostElement(placeHolderPostData, observer)
     }
+    posts.forEach((post) => createBlogPostElement(post, observer));
+}
 
-    posts.forEach((post) => {
-        const { name, imgUrl, content } = post;
+async function createBlogPostElement(postData, observer, maxLength = 150) {
+    const { name, imgUrl, content } = postData;
+    const blogPostHTML = await fetch("../../components/blog.html").then((response) => response.text());
+    const element = createDomElement('div', null, ['blog-post', 'fade-in__bottom']);
+    element.innerHTML = blogPostHTML;
 
-        const blogPost = createDomElement('div', null, ['blog-post', 'fade-in__bottom']);
+    element.querySelector(".blog-category").innerHTML = name;
+    element.querySelector(".blog-header").innerHTML = content.slice(0, maxLength) + "…";
+    element.querySelector("img")?.setAttribute("src", imgUrl);
 
-        const blogPostImageContainer = createDomElement('div', null, ['blog-post__image']);
-        const blogPostImg = createDomElement('img');
-        blogPostImg.setAttribute('src', imgUrl);
-        blogPostImageContainer.appendChild(blogPostImg)
-
-        const blogPostText = createDomElement('div', null, ['blog-post__text']);
-        const blogCategory = createDomElement('p', name, ['blog-category']);
-        const blogHeader = createDomElement('h3', content.slice(0, 150), ['blog-header']);
-        blogPostText.appendChild(blogCategory)
-        blogPostText.appendChild(blogHeader)
-
-
-        blogPost.appendChild(blogPostImageContainer);
-        blogPost.appendChild(blogPostText);
-
-
-        blogContainer.appendChild(blogPost);
-        observer.observe(blogPost);
-    });
+    document.querySelector('.blog__posts').appendChild(element);
+    observer.observe(element);
 }
 
 export function initBlog(observer) {
     loadPosts()
         .then(posts => createBlogPost(posts, observer))
         .catch(e => handleError(e, observer));
-}
-
-function handleError(error, observer) {
-    const blogPost = createDomElement('div', null, ['blog-post', 'fade-in__bottom']);
-
-    const blogPostImageContainer = createDomElement('div', null, ['blog-post__image']);
-    const blogPostImg = createDomElement('img');
-    blogPostImg.setAttribute('src', '../../assets/error.svg');
-    blogPostImageContainer.appendChild(blogPostImg)
-
-    const blogPostText = createDomElement('div', null, ['blog-post__text']);
-    const blogCategory = createDomElement('p', 'Nothing to see here…', ['blog-category']);
-    const blogHeader = createDomElement('h3', error, ['blog-header']);
-    blogPostText.appendChild(blogCategory)
-    blogPostText.appendChild(blogHeader)
-
-    blogPost.appendChild(blogPostImageContainer);
-    blogPost.appendChild(blogPostText);
-
-    blogContainer.appendChild(blogPost);
-    observer.observe(blogPost);
 }
