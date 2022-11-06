@@ -175,7 +175,7 @@ h1, h2 {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 1.875em;
+  gap: 2.75rem;
 }
 
 .experience-list__card {
@@ -184,6 +184,7 @@ h1, h2 {
   align-items: center;
   max-width: 22rem;
   text-align: center;
+  flex: 1;
 }
 
 .experience-list__card.active {
@@ -200,6 +201,8 @@ h1, h2 {
 .card-image img {
   width: 100%;
   height: 100%;
+
+  aspect-ratio: 1 / 1;
   object-fit: contain;
   object-position: center;
   color: white;
@@ -249,7 +252,7 @@ h1, h2 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 4.75rem;
+  gap: 3rem;
 }
 
 .blog-post {
@@ -258,7 +261,7 @@ h1, h2 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-bottom: 3.125rem;
+  padding-bottom: 2rem;
   gap: 4.75rem;
   cursor: pointer;
 }
@@ -278,7 +281,6 @@ h1, h2 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   justify-content: center;
 }
 
