@@ -1,4 +1,4 @@
-const TIME_OUT = 600 // It should be the same transition time of the sections
+const TIME_OUT = 1800 // It should be the same transition time of the sections
 const body = document.querySelector('body')
 const sectionsQty = document.querySelectorAll('section').length
 const sideNav = document.querySelector('.side-nav')
