@@ -107,7 +107,6 @@ p {
   --diameter: clamp(700vw, 800vw, 1000vw);
   --top-default: max(-20vh, calc(-20vh + ((75rem - 100vw) * 0.15)));
   --left-default: min(10vw, calc(-60vw + (100vw - 23.5rem)));
-  background-color: #363E59;
   min-width: 31.25rem;
   max-width: 47vw;
   min-height: 31.25rem;
@@ -119,7 +118,6 @@ p {
   --diameter: clamp(31.25rem, 60vw, 37.5rem);
   --top-default: -23.75rem;
   --right-default: -21.875rem;
-  background-color: #D89D8F;
   animation-duration: 1s;
 }
 
@@ -127,7 +125,6 @@ p {
   --diameter: clamp(62.5rem, 150vw, 80rem);
   --right-default: -18.75rem;
   --bottom-default: -56.25rem;
-  background-color: #A66A74;
   animation-duration: 1s;
   animation-delay: 0.2s;
 }
@@ -255,11 +252,6 @@ p {
 .contact__content {
   /*background-color: var(--darkblue);*/
   background-color: var(--orange);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 3.25rem;
 }
 
 /*===========================================================================================
@@ -283,7 +275,7 @@ p {
   transform: scale(1) translateX(0%);
 }
 
-.projects__content img {
+.projects__content img, .about-me__content img, .contact__content img {
   width: 100%;
   height: 100%;
   object-fit: cover;
