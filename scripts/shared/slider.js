@@ -23,41 +23,14 @@ export class Slider {
      * Initialises Slider-DOM
      */
     init() {
-        const imageSlide = createDomElement("img", null, ["project-slider__img"]);
         let activeSlide = this.slides[this.activeSlideIndex];
-        imageSlide.src = activeSlide.image;
-        imageSlide.addEventListener("click", () => {
-            this.focusSlide()
-        });
 
-        const description = createDomElement('div', null, ['project-slider__description-container']);
-        const slideDescription = createDomElement('h3', activeSlide.description, ['project-slider__description']);
-        description.appendChild(slideDescription);
+        console.log(activeSlide)
 
-        const prevBtn = createDomElement("div", null, ["project-slider__btn", "prev"]);
-        prevBtn.addEventListener("click", () => this.changeSlide(-1));
+        activeSlide.addEventListener("click", () => this.changeSlide(-1))
 
-        const nextBtn = createDomElement("div", null, ["project-slider__btn", "next"]);
-        nextBtn.addEventListener("click", () => this.changeSlide(1));
-
-        this.buttons = [prevBtn, nextBtn]
-
-        this.activeSlide = imageSlide;
-        this.slideDescription = slideDescription;
-        this.container.appendChild(imageSlide);
-        this.container.appendChild(prevBtn);
-        this.container.appendChild(nextBtn);
-        this.container.appendChild(description);
         this.play();
-    }
-
-    /**
-     * Zooms into current slide and disables slide function
-     */
-    focusSlide() {
-        this.container.classList.toggle("active")
-        this.buttons.forEach((btn) => btn.classList.toggle("disabled"))
-        this.toggleTimer();
+        this.activeSlide = activeSlide;
     }
 
     /**
@@ -82,8 +55,14 @@ export class Slider {
     }
 
     updateSlide() {
-        this.activeSlide.src = this.slides[this.activeSlideIndex].image;
-        this.slideDescription.innerText = this.slides[this.activeSlideIndex].description;
+        this.slides.forEach(slide => slide.classList.remove("active"))
+
+        this.activeSlide = this.slides[this.activeSlideIndex];
+        console.log(this.slides);
+        console.log(this.activeSlide)
+
+
+        this.activeSlide.classList.add("active");
     }
 
     /**

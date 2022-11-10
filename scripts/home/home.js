@@ -1,15 +1,16 @@
 import {createMenuEventListener} from '../shared/create-menu-event-listener.js';
 import {starTransition} from './star-transition.js';
-import {Quest} from '../shared/quest/quest.js';
-import {contactForm, contactQuestSteps} from './contact-quest.js';
+import {Slider} from '../shared/slider.js';
 
 const starBackground = document.querySelector('.stars');
 const menuBtn = document.querySelector("#menu-icon");
+const projectSliderContainer = document.querySelector('.projects__content');
+const slides = document.querySelectorAll('.projects__slide');
 
-
-new Quest(contactForm, contactQuestSteps);
 
 createMenuEventListener(menuBtn);
+
+new Slider(projectSliderContainer, [...slides])
 
 document.body.addEventListener("mousemove", (e) => {
     const { clientX, clientY } = e;
