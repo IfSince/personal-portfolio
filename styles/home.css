@@ -210,7 +210,7 @@ p {
 /*===========================================================================================
         Content General
 =============================================================================================*/
-.projects, .contact, .contact {
+.projects, .about-me, .contact {
   position: absolute;
   right: 0;
   top: 0;
@@ -265,13 +265,21 @@ p {
 /*===========================================================================================
         Projects
 =============================================================================================*/
-.projects__content {
+.projects__content, .contact__content, .about-me__content {
   transform: scale(0.85) translateX(10%);
   transition: transform 1.6s cubic-bezier(.39,.29,.2,1.01);
   overflow: hidden;
 }
 
 .hero.active + .projects .projects__content {
+  transform: scale(1) translateX(0%);
+}
+
+.hero.active + .about-me .about-me__content {
+  transform: scale(1) translateX(0%);
+}
+
+.hero.active + .contact .contact__content {
   transform: scale(1) translateX(0%);
 }
 
@@ -301,6 +309,13 @@ p {
   transform: translateX(110%);
 }
 
+.hero.active + .contact .contact__content .image__cover {
+  transform: translateX(110%);
+}
+
+.hero.active + .about-me .about-me__content .image__cover {
+  transform: translateX(110%);
+}
 
 .projects__count {
   position: absolute;
