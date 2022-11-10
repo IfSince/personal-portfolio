@@ -1,0 +1,221 @@
+:root {
+}
+.stars {
+  --x: 0;
+  --y: 0;
+  transform: translate(var(--x), var(--y));
+  position: fixed;
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/*===========================================================================================
+        Hero
+=============================================================================================*/
+.hero {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+  margin-bottom: 10vh;
+  overflow: hidden;
+}
+
+.hero__image {
+  height: 100%;
+  min-width: max(25rem, 30vw);
+  background-color: var(--orange);
+}
+
+.hero__image:nth-child(odd) {
+  min-width: max(47rem, 40vw);
+  background-color: var(--clr-primary);
+}
+
+.content-section {
+  display: flex;
+  margin: 0 var(--content-padding) clamp(9.375rem, 20vw, 16rem);
+}
+
+/*===========================================================================================
+        Contact
+=============================================================================================*/
+.contact {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  column-gap: 5rem;
+  row-gap: 3rem;
+}
+
+.contact__image-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contact__image {
+  min-width: 18.75rem;
+  max-width: 25vw;
+  width: 100%;
+  height: 55vh;
+  max-height: 31.25rem;
+  background: none;
+}
+
+.contact__image img {
+  border-radius: 0.125rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/*===========================================================================================
+        Contact Form
+=============================================================================================*/
+.form-container {
+  width: 100%;
+  height: 650px;
+  position: relative;
+  padding-top: 40px;
+}
+
+.form-container h2 {
+  z-index: 2;
+  position: relative;
+}
+
+.contact-form-container {
+  --mg-left: 100px;
+  position: absolute;
+  width: calc(100% - var(--mg-left) * 2);
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0 var(--mg-left);
+  background-color: var(--darkblue);
+  border-radius: 10px;
+  display: flex;
+}
+
+.contact-form__steps {
+  height: 100%;
+  width: 40%;
+  background-color: var(--orange);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.contact-form__steps ul {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  margin-top: 20%;
+}
+
+.contact-form__steps ul li {
+  padding: 25px 80px 25px 15px;
+  cursor: pointer;
+}
+
+.contact-form__steps ul li.active h3 {
+  color: var(--clr-primary);
+  transform: translateX(35%);
+}
+
+
+.contact-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 25px 50px 50px;
+}
+
+.quest__form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quest__panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+}
+
+.quest__panel.active {
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-row {
+  margin-top: 60px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.625rem;
+  height: 3.25rem;
+  width: 100%;
+}
+
+.btn-row .btn {
+  flex-grow: 1;
+  padding: 0;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/*===========================================================================================
+        Media Queries
+=============================================================================================*/
+@media screen and (max-width: 900px) {
+  .contact-form-container {
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    position: relative;
+  }
+
+  .contact-form__steps {
+    height: unset;
+    width: 100%;
+  }
+
+  .contact-form__steps ul {
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+  }
+
+  .contact-form__steps ul li {
+    padding: 0;
+    text-align: left;
+  }
+
+  .contact-form__steps ul li.active h3 {
+    color: var(--clr-primary);
+    transform: translateY(30%);
+  }
+
+  .contact-form {
+    padding: 25px;
+  }
+}

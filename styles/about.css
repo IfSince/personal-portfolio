@@ -61,7 +61,7 @@ h1, h2 {
 /*===========================================================================================
         Header Lines
 =============================================================================================*/
-.about-me h1::before {
+.contact h1::before {
   width: var(--line-base-width);
   background-color: var(--clr-primary);
   transform: translateX(calc(var(--about-padding) * -1));
@@ -128,24 +128,20 @@ h1, h2 {
 /*===========================================================================================
         About Me
 =============================================================================================*/
-.about-me {
+.contact {
   justify-content: flex-start;
   flex-wrap: wrap;
   column-gap: 5rem;
   row-gap: 3rem;
 }
 
-.about-me div .sub-header {
-  max-width: 37.5rem;
-}
-
-.about-me__image-container {
+.contact__image-container {
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
 }
 
-.about-me__image {
+.contact__image {
   min-width: 18.75rem;
   max-width: 25vw;
   width: 100%;
@@ -154,7 +150,7 @@ h1, h2 {
   background: none;
 }
 
-.about-me__image img {
+.contact__image img {
   border-radius: 0.125rem;
   width: 100%;
   height: 100%;
@@ -364,7 +360,7 @@ h1, h2 {
   }
 
   /*************** About me ***************/
-  .about-me__image {
+  .contact__image {
     max-width: unset;
     min-width: unset;
     max-height: 22.5rem;

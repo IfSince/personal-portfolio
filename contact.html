@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <title>Contact</title>
+  
+  <link rel="stylesheet" href="https://use.typekit.net/hbp1ubp.css"> <!-- Adobe Font-->
+  <link rel="stylesheet" type="text/css" href="./styles/shared/reset.css">
+  <link rel="stylesheet" href="styles/shared/style.css" />
+  <link rel="stylesheet" href="styles/contact.css" />
+</head>
+<body>
+  <img class="stars" src="./assets/home/stars.svg" alt="stars">
+  <header>
+    <a href="./home.html" class="logo">Leon Laade</a>
+    <button class="mobile-only" id="menu-icon">
+      <svg>
+        <rect fill="#E2E2E2" height="3" width="35" x="0" y="4"></rect>
+        <rect fill="#E2E2E2" height="3" width="20" x="0" y="15"></rect>
+        <rect fill="#E2E2E2" height="3" width="27" x="0" y="25.5"></rect>
+      </svg>
+    </button>
+    <nav>
+      <ul>
+        <li><a class="nav-element" href="home.html">Home</a></li>
+        <li><a class="nav-element" href="#">My Portfolio</a></li>
+        <li><a class="nav-element" href="#">About Me</a></li>
+        <li><a class="nav-element" href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section class="hero">
+    <div class="hero__image"></div>
+    <div class="hero__image"></div>
+    <div class="hero__image"></div>
+  </section>
+  
+  <section class="contact content-section">
+    <div>
+      <h1>Contact</h1>
+      <p class="sub-header">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, </p>
+    </div>
+    <div class="contact__image-container">
+      <div class="contact__image">
+        <img src="./assets/contact/astronaut.svg" alt="Picture of myself">
+      </div>
+    </div>
+  </section>
+  
+  <section class="content-section">
+    <div class="form-container">
+      <h2>Don't by shy</h2>
+      <div class="contact-form-container">
+        <div class="contact-form__steps">
+          <ul>
+            <li class="active"><h3>Personal</h3></li>
+            <li><h3>Address</h3></li>
+            <li><h3>Message</h3></li>
+          </ul>
+        </div>
+        <div class="contact-form">
+          <form action="" class="quest__form">
+            <div class="quest__panel active" id="personalStep">
+              <div>
+                <label for="salutation">Salutation</label>
+                <select id="salutation" class="form-control">
+                  <option value="Mr" selected>Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Mx">Mx</option>
+                </select>
+              </div>
+              <div>
+                <label for="firstName">First name</label>
+                <input class="form-control" type="text" id="firstName">
+              </div>
+              <div>
+                <label for="surname">Surname</label>
+                <input class="form-control" type="text" id="surname">
+              </div>
+            </div>
+    
+            <div class="quest__panel" id="addressStep">
+              <div>
+                <label for="street">Street</label>
+                <input class="form-control" type="text" id="street">
+              </div>
+              <div>
+                <label for="houseNr">House nr.</label>
+                <input class="form-control" type="text" id="houseNr">
+              </div>
+              <div>
+                <label for="zip">ZIP</label>
+                <input class="form-control" type="text" id="zip">
+              </div>
+              <div>
+                <label for="city">City</label>
+                <input class="form-control" type="text" id="city">
+              </div>
+            </div>
+    
+            <div class="quest__panel" id="messageStep">
+              <div>
+                <label for="email">Email</label>
+                <input class="form-control" type="text" id="email">
+              </div>
+              <div>
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message"></textarea>
+              </div>
+            </div>
+              
+            <div class="btn-row">
+              <button class="btn btn-primary" type="button" data-btn-type="next">To the moon!</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <img class="stars" src="./assets/home/stars.svg" alt="stars">
+
+</body>
+</html>
