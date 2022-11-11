@@ -20,10 +20,6 @@ h1::before, h2::before {
   left: 0;
 }
 
-h1, h2 {
-  position: relative;
-}
-
 /*===========================================================================================
         Background
 =============================================================================================*/
@@ -34,7 +30,7 @@ h1, h2 {
   perspective: 0.625rem;
 }
 
-.stars, .planet, .planet2 {
+.stars, .planet {
   position: absolute;
   z-index: -1;
   user-select: none;
@@ -61,7 +57,7 @@ h1, h2 {
 /*===========================================================================================
         Header Lines
 =============================================================================================*/
-.header h1::before {
+h1::before {
   width: var(--line-base-width);
   background-color: var(--clr-primary);
   transform: translateX(calc(var(--about-padding) * -1));
@@ -84,7 +80,6 @@ h1, h2 {
   width: calc(var(--line-base-width) + var(--about-padding) * 2);
   transform: translateX(calc(var(--about-padding) * -3));
 }
-
 
 .socials h2 {
   margin-left: calc(var(--about-padding) * 3);
@@ -128,20 +123,13 @@ h1, h2 {
 /*===========================================================================================
         About Me
 =============================================================================================*/
-.header {
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  column-gap: 5rem;
-  row-gap: 3rem;
-}
-
-.contact__image-container {
+.about-me__image-container {
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
 }
 
-.contact__image {
+.about-me__image {
   min-width: 18.75rem;
   max-width: 25vw;
   width: 100%;
@@ -150,7 +138,7 @@ h1, h2 {
   background: none;
 }
 
-.contact__image img {
+.about-me__image img {
   border-radius: 0.125rem;
   width: 100%;
   height: 100%;
@@ -162,7 +150,7 @@ h1, h2 {
 /*===========================================================================================
         Experience
 =============================================================================================*/
-.experience {
+.experience, .blog {
   display: flex;
   flex-direction: column;
 }
@@ -196,23 +184,15 @@ h1, h2 {
 
 .card-image img {
   width: 100%;
-  height: 100%;
-
   aspect-ratio: 1 / 1;
   object-fit: contain;
   object-position: center;
   color: white;
 }
 
-
 /*===========================================================================================
         Blog
 =============================================================================================*/
-.blog {
-  display: flex;
-  flex-direction: column;
-}
-
 .blog__content {
   display: flex;
   gap: 12.5rem;
@@ -221,10 +201,6 @@ h1, h2 {
 .blog__description {
   display: flex;
   flex-direction: column;
-}
-
-.blog__description .btn {
-  width: fit-content;
 }
 
 .blog__description-icon {

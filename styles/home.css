@@ -11,18 +11,14 @@ body::-webkit-scrollbar {
         Fonts
 =============================================================================================*/
 h1, h2 {
-  font-weight: 500;
   font-size: clamp(2.875rem, 10vw, 7.563rem);
   letter-spacing: 0.06em;
-  color: var(--txt-primary);
-  text-transform: uppercase;
+  line-height: 1;
   margin-bottom: 0.35em;
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
   height: fit-content;
-  line-height: 1;
 }
 
 h1::after, h2::after {
@@ -30,19 +26,6 @@ h1::after, h2::after {
   width: 60%;
   height: 0.07em;
   background-color: var(--clr-primary);
-}
-
-h4 {
-  font-size: 1.5rem;
-}
-
-h5 {
-  font-weight: 500;
-  font-size: clamp(0.75rem, 2.5vw, 1.5rem);
-  letter-spacing: 0.15em;
-  line-height: 1.292;
-  text-transform: uppercase;
-  color: var(--clr-primary);
 }
 
 p {
@@ -58,38 +41,42 @@ p {
 /*===========================================================================================
         Background
 =============================================================================================*/
-.stars {
-  --x: 0;
-  --y: 0;
-  transform: translate(var(--x), var(--y));
-  position: fixed;
-  overflow: visible;
-  width: 100%;
-  height: 100%;
-  user-select: none;
-  pointer-events: none;
-}
 
 .planet {
   position: fixed;
   border-radius: 50%;
   opacity: 0;
-
-  --top-default: inherit;
-  --right-default: inherit;
-  --bottom-default: inherit;
-  --left-default: inherit;
-
-  width: var(--diameter);
-  height: var(--diameter);
-  top: var(--top-default);
-  right: var(--right-default);
-  bottom: var(--bottom-default);
-  left: var(--left-default);
+  aspect-ratio: 1 / 1;
 
   animation: planetSlideIn;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(.59,.24,.4,1);
+}
+
+.planet__blue {
+  width: clamp(700vw, 800vw, 1000vw);
+  top: max(-20vh, calc(-20vh + ((75rem - 100vw) * 0.15)));
+  left: min(10vw, calc(-60vw + (100vw - 23.5rem)));
+  min-width: 31.25rem;
+  max-width: 47vw;
+  min-height: 31.25rem;
+  max-height: 47vw;
+  animation-duration: 0.8s;
+}
+
+.planet__orange {
+  width: clamp(31.25rem, 60vw, 37.5rem);
+  top: -23.75rem;
+  right: -21.875rem;
+  animation-duration: 1s;
+}
+
+.planet__red {
+  width: clamp(62.5rem, 150vw, 80rem);
+  right: -18.75rem;
+  bottom: -56.25rem;
+  animation-duration: 1s;
+  animation-delay: 0.2s;
 }
 
 @keyframes planetSlideIn {
@@ -101,32 +88,6 @@ p {
     opacity: 50%;
     transform: translate(0);
   }
-}
-
-.planet__blue {
-  --diameter: clamp(700vw, 800vw, 1000vw);
-  --top-default: max(-20vh, calc(-20vh + ((75rem - 100vw) * 0.15)));
-  --left-default: min(10vw, calc(-60vw + (100vw - 23.5rem)));
-  min-width: 31.25rem;
-  max-width: 47vw;
-  min-height: 31.25rem;
-  max-height: 47vw;
-  animation-duration: 0.8s;
-}
-
-.planet__orange {
-  --diameter: clamp(31.25rem, 60vw, 37.5rem);
-  --top-default: -23.75rem;
-  --right-default: -21.875rem;
-  animation-duration: 1s;
-}
-
-.planet__red {
-  --diameter: clamp(62.5rem, 150vw, 80rem);
-  --right-default: -18.75rem;
-  --bottom-default: -56.25rem;
-  animation-duration: 1s;
-  animation-delay: 0.2s;
 }
 
 /*===========================================================================================
@@ -207,7 +168,7 @@ p {
 /*===========================================================================================
         Content General
 =============================================================================================*/
-.projects, .about-me, .header {
+.content {
   position: absolute;
   right: 0;
   top: 0;
@@ -219,75 +180,25 @@ p {
   padding: 8.75rem var(--content-padding) 8.75rem 4.5rem;
 }
 
-.projects__content, .about-me__content, .contact__content {
+.section__content {
   width: 100%;
   height: 100%;
   position: relative;
   max-width: 60vw;
-}
-
-.projects {
-  /*background-color: var(--clr-primary);*/
-}
-
-.projects__content {
-  /*background-color: var(--darkblue);*/
-  background-color: var(--clr-primary);
-}
-
-.header {
-  /*background-color: var(--darkblue);*/
-}
-
-.about-me__content {
-  /*background-color: var(--clr-primary);*/
-  background-color: var(--darkblue);
-
-}
-
-.header {
-  /*background-color: var(--orange);*/
-}
-
-.contact__content {
-  /*background-color: var(--darkblue);*/
-  background-color: var(--orange);
-}
-
-/*===========================================================================================
-        Projects
-=============================================================================================*/
-.projects__content, .contact__content, .about-me__content {
   transform: scale(0.85) translateX(10%);
   transition: transform 1.6s cubic-bezier(.39,.29,.2,1.01);
   overflow: hidden;
 }
 
-.hero.active + .projects .projects__content {
-  transform: scale(1) translateX(0%);
-}
-
-.hero.active + .about-me .about-me__content {
-  transform: scale(1) translateX(0%);
-}
-
-.hero.active + .header .contact__content {
-  transform: scale(1) translateX(0%);
-}
-
-.projects__content img, .about-me__content img, .contact__content img {
+.section__content img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   position: absolute;
 }
 
-.projects__content .projects__slide {
-  visibility: hidden;
-}
-
-.projects__content .projects__slide.active {
-  visibility: visible;
+.hero.active + .content .section__content {
+  transform: scale(1) translateX(0%);
 }
 
 .animation-div {
@@ -316,122 +227,23 @@ p {
   transform: translateX(110%);
 }
 
+/*===========================================================================================
+        Projects
+=============================================================================================*/
+.section__content .projects__slide {
+  visibility: hidden;
+}
+
+.section__content .projects__slide.active {
+  visibility: visible;
+}
+
 .projects__count {
   position: absolute;
   bottom: 0.15em;
   right: 0;
   font-weight: 500;
   font-size: clamp(3.375rem, 10vw, 7.563rem);
-}
-
-/*===========================================================================================
-        Contact Form
-=============================================================================================*/
-.quest {
-  width: 100%;
-  height: 100%;
-  max-width: 25rem;
-  margin: 3.5rem 0 3.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.quest__progress {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-}
-
-.quest__progress-btn {
-  --dot-diameter: 0.875rem;
-
-  position: relative;
-  padding-top: 1.25rem;
-  color: rgba(108, 117, 125, 0.7);
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  transition: all .15s linear 0s;
-}
-
-.quest__progress-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: var(--dot-diameter);
-  aspect-ratio: 1 / 1;
-  transform: translateX(-50%);
-  transition: all .15s linear 0s,
-  transform .15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
-  border: 0.125rem solid currentColor;
-  border-radius: 50%;
-  background-color: #fff;
-  box-sizing: border-box;
-  z-index: 3;
-}
-
-.quest__progress-btn::after {
-  content: '';
-  position: absolute;
-  top: 0.313rem;
-  left: calc(-50% - var(--dot-diameter) / 2);
-  transition: all .15s linear 0s;
-  width: 100%;
-  height: 0.125rem;
-  background-color: currentColor;
-  z-index: 1;
-}
-
-.quest__progress-btn:first-child::after {
-  display: none;
-}
-
-.quest__progress-btn.active {
-  color: var(--clr-primary);
-}
-
-.quest__progress-btn.active:before {
-  transform: translateX(-50%) scale(1.2);
-  background-color: currentColor;
-}
-
-.quest__progress-btn.error {
-  color: var(--error);
-}
-
-.quest__form {
-  width: 100%;
-}
-
-.quest__panel {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.875rem;
-  opacity: 0;
-  visibility: hidden;
-  height: 0;
-}
-
-.quest__panel.active {
-  height: 100%;
-  opacity: 1;
-  visibility: visible;
-}
-
-.btn-row {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1.625rem;
-  height: 3.25rem;
-}
-
-.btn-row .btn {
-  width: 50%;
-  padding: 0;
-  margin: 0;
-  font-size: 1.25rem;
 }
 
 /*===========================================================================================
@@ -473,33 +285,10 @@ ul.side-nav {
   }
 
   /*************** General Content ***************/
-  .projects, .header, .header {
+  .content, .header, .header {
     width: 100%;
     height: 65vh;
     padding: 5rem calc(var(--content-padding) + 1rem) 3.5rem;
-  }
-
-  /*************** Contact Me / Quest ***************/
-  .quest {
-    margin: 0.75rem 0 0 0;
-  }
-
-  .quest__progress-btn {
-    font-size: 0.75rem;
-    --dot-diameter: 0.625rem;
-  }
-
-  .quest__panel {
-    gap: 1rem;
-  }
-
-  .btn-row {
-    gap: 0.75rem;
-    height: 2rem;
-  }
-
-  .btn-row .btn {
-    font-size: 0.75rem;
   }
 
   /*************** Side Nav ***************/
@@ -526,18 +315,17 @@ ul.side-nav {
   body::-webkit-scrollbar {
     width: 0;
     background: transparent;
-    -webkit-appearance: none;
   }
 
   /*************** Content General ***************/
-  .projects, .header, .header {
+  .content, .header, .header {
     width: 100%;
     height: 65vh;
     padding: 4.125rem calc(var(--content-padding) + 1rem) 3.5rem;
   }
 
   /*************** Content General ***************/
-  .projects__content, .about-me__content, .contact__content {
+  .section__content {
     max-width: unset;
   }
 }
