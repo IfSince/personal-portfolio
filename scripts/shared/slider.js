@@ -27,7 +27,8 @@ export class Slider {
 
         console.log(activeSlide)
 
-        activeSlide.addEventListener("click", () => this.changeSlide(-1))
+        this.slides.forEach(slide => slide.addEventListener("click",() => this.changeSlide(1)));
+
 
         this.play();
         this.activeSlide = activeSlide;
@@ -56,11 +57,21 @@ export class Slider {
 
     updateSlide() {
         this.slides.forEach(slide => slide.classList.remove("active"))
+        const animationDivs = this.container.querySelectorAll('.image__cover')
+        animationDivs.forEach((div) => {
+            div.classList.remove('active');
+            div.classList.remove('image__cover');
+
+            // Timeout is necessary to reset the styles for animation
+            setTimeout(() => {
+                div.classList.add('image__cover');
+                div.classList.add('active');
+            }, 1)
+
+        })
+
 
         this.activeSlide = this.slides[this.activeSlideIndex];
-        console.log(this.slides);
-        console.log(this.activeSlide)
-
 
         this.activeSlide.classList.add("active");
     }

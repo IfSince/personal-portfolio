@@ -19,3 +19,23 @@ document.body.addEventListener("mousemove", (e) => {
 
     starTransition(starBackground, e.pageX, e.pageY, 0.005);
 });
+
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        const target = entry.target;
+        const animationDivs = target.nextElementSibling?.querySelectorAll('.image__cover');
+        if (entry.isIntersecting) {
+            target.classList.add("active");
+            animationDivs?.forEach(div => div.classList.add("active"));
+        } else {
+            target.classList.remove("active");
+            animationDivs?.forEach(div => div.classList.remove("active"));
+        }
+    });
+})
+
+document.querySelectorAll('.hero').forEach((section) => {
+    observer.observe(section);
+})
+

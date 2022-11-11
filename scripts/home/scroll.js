@@ -59,18 +59,3 @@ window.onscroll = () => {
     // Keep scrollbar in the middle of the viewport
     window.scroll(0, window.screen.height)
 }
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-        } else {
-            entry.target.classList.remove("active");
-        }
-    });
-})
-
-document.querySelectorAll('.hero').forEach((section) => {
-    observer.observe(section);
-})
-
