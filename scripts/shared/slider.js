@@ -1,5 +1,3 @@
-import {createDomElement} from "../util/createDomElement.js";
-
 export class Slider {
     activeSlideIndex = 0
     activeSlide = null;
@@ -15,7 +13,6 @@ export class Slider {
         this.container = container;
         this.slides = slides;
         this.autoTime = autoTime;
-
         this.init();
     }
 
@@ -24,11 +21,7 @@ export class Slider {
      */
     init() {
         let activeSlide = this.slides[this.activeSlideIndex];
-
-        console.log(activeSlide)
-
         this.slides.forEach(slide => slide.addEventListener("click",() => this.changeSlide(1)));
-
 
         this.play();
         this.activeSlide = activeSlide;
@@ -67,12 +60,8 @@ export class Slider {
                 div.classList.add('image__cover');
                 div.classList.add('active');
             }, 1)
-
         })
-
-
         this.activeSlide = this.slides[this.activeSlideIndex];
-
         this.activeSlide.classList.add("active");
     }
 
