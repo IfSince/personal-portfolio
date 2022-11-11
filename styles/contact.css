@@ -1,157 +1,101 @@
-:root {
+body {
+  /*overflow-x: hidden;*/
 }
+
 .stars {
   --x: 0;
   --y: 0;
   transform: translate(var(--x), var(--y));
   position: fixed;
-  overflow: visible;
+  /*overflow: visible;*/
   width: 100%;
   height: 100%;
   user-select: none;
   pointer-events: none;
+  z-index: -2;
+}
+
+.image-wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
   z-index: -1;
 }
 
-/*===========================================================================================
-        Hero
-=============================================================================================*/
-.hero {
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-basis: 100%;
-  margin-bottom: 10vh;
+.planet__blue {
+  z-index: -1;
+  position: absolute;
+  opacity: 0.7;
+  transform: rotate(30deg) translate(-40%, -40%);
+
+  width: max(300px, 40vw);
+  aspect-ratio: 1 / 1;
+  top: 0;
+  left: 0;
   overflow: hidden;
 }
 
-.hero__image {
-  height: 100%;
-  min-width: max(25rem, 30vw);
-  background-color: var(--orange);
+.planet__orange {
+  width: max(250px, 30vw);
+  aspect-ratio: 1 / 1;
+  bottom: 0;
+  right: 0;
+  opacity: 0.7;
+  position: absolute;
+  z-index: -1;
+  transform: rotate(30deg) translate(50%, 50%);
 }
 
-.hero__image:nth-child(odd) {
-  min-width: max(47rem, 40vw);
-  background-color: var(--clr-primary);
+.content-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.header {
+  height: fit-content;
+  align-self: flex-end;
+  width: 40%;
 }
 
 .content-section {
   display: flex;
-  margin: 0 var(--content-padding) clamp(9.375rem, 20vw, 16rem);
+  padding: 150px 0 150px var(--content-padding);
+  width: 100%;
 }
 
-/*===========================================================================================
-        Contact
-=============================================================================================*/
-.contact {
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  column-gap: 5rem;
-  row-gap: 3rem;
-}
-
-.contact__image-container {
+.content-section:last-child {
   flex-grow: 1;
-  display: flex;
-  justify-content: flex-end;
+  margin: 0;
 }
-
-.contact__image {
-  min-width: 18.75rem;
-  max-width: 25vw;
-  width: 100%;
-  height: 55vh;
-  max-height: 31.25rem;
-  background: none;
-}
-
-.contact__image img {
-  border-radius: 0.125rem;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/*===========================================================================================
-        Contact Form
-=============================================================================================*/
-.form-container {
-  width: 100%;
-  height: 650px;
-  position: relative;
-  padding-top: 40px;
-}
-
-.form-container h2 {
-  z-index: 2;
-  position: relative;
-}
-
-.contact-form-container {
-  --mg-left: 100px;
-  position: absolute;
-  width: calc(100% - var(--mg-left) * 2);
-  height: 100%;
-  top: 0;
-  left: 0;
-  margin: 0 var(--mg-left);
-  background-color: var(--darkblue);
-  border-radius: 10px;
-  display: flex;
-}
-
-.contact-form__steps {
-  height: 100%;
-  width: 40%;
-  background-color: var(--orange);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-.contact-form__steps ul {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-evenly;
-  margin-top: 20%;
-}
-
-.contact-form__steps ul li {
-  padding: 25px 80px 25px 15px;
-  cursor: pointer;
-}
-
-.contact-form__steps ul li.active h3 {
-  color: var(--clr-primary);
-  transform: translateX(35%);
-}
-
 
 .contact-form {
-  width: 100%;
-  height: 100%;
+  align-self: center;
+
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 50px 25px 50px 50px;
+  justify-content: center;
+
+  height: 100vh;
+}
+
+.quest-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: max-content;
 }
 
 .quest__form {
-  width: 100%;
-  max-width: 500px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
+  max-width: 400px;
 }
 
 .quest__panel {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.875rem;
@@ -180,42 +124,66 @@
   padding: 0;
   margin: 0;
   font-size: 1.25rem;
+  display: none;
 }
+
+.btn-row .btn.active {
+  display: block;
+}
+
+.quest-steps {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-left: 2px solid var(--clr-primary);
+  gap: 60px;
+  padding: 25px 0 25px 35px;
+}
+
+.quest-steps__link {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.quest-steps__link.active {
+  color: var(--clr-primary);
+}
+
 
 /*===========================================================================================
         Media Queries
 =============================================================================================*/
-@media screen and (max-width: 900px) {
-  .contact-form-container {
+@media screen and (max-width: 1500px) {
+  .content-wrapper {
     flex-direction: column;
-    margin: 0;
-    width: 100%;
-    position: relative;
+    padding: 0 var(--content-padding);
   }
 
-  .contact-form__steps {
-    height: unset;
-    width: 100%;
+  .content-section {
+    padding: unset;
+    margin-bottom: 20vh !important;
   }
 
-  .contact-form__steps ul {
+  .content-section:last-child {
+    padding-bottom: 20vh;
+  }
+
+  h1 {
+    margin-top: 20vh
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .quest-container {
+    flex-direction: column-reverse;
+  }
+
+  .quest-steps {
     flex-direction: row;
-    width: 100%;
-    height: auto;
-    margin-bottom: 30px;
-  }
-
-  .contact-form__steps ul li {
-    padding: 0;
-    text-align: left;
-  }
-
-  .contact-form__steps ul li.active h3 {
-    color: var(--clr-primary);
-    transform: translateY(30%);
-  }
-
-  .contact-form {
-    padding: 25px;
+    padding: 0 0 10px 0;
+    border-left: unset;
+    border-bottom: 2px solid var(--clr-primary);
+    gap: 8vw;
+    margin-bottom: 8vh;
   }
 }

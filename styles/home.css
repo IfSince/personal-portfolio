@@ -207,7 +207,7 @@ p {
 /*===========================================================================================
         Content General
 =============================================================================================*/
-.projects, .about-me, .contact {
+.projects, .about-me, .header {
   position: absolute;
   right: 0;
   top: 0;
@@ -235,7 +235,7 @@ p {
   background-color: var(--clr-primary);
 }
 
-.contact {
+.header {
   /*background-color: var(--darkblue);*/
 }
 
@@ -245,7 +245,7 @@ p {
 
 }
 
-.contact {
+.header {
   /*background-color: var(--orange);*/
 }
 
@@ -271,7 +271,7 @@ p {
   transform: scale(1) translateX(0%);
 }
 
-.hero.active + .contact .contact__content {
+.hero.active + .header .contact__content {
   transform: scale(1) translateX(0%);
 }
 
@@ -473,7 +473,7 @@ ul.side-nav {
   }
 
   /*************** General Content ***************/
-  .projects, .contact, .contact {
+  .projects, .header, .header {
     width: 100%;
     height: 65vh;
     padding: 5rem calc(var(--content-padding) + 1rem) 3.5rem;
@@ -530,7 +530,7 @@ ul.side-nav {
   }
 
   /*************** Content General ***************/
-  .projects, .contact, .contact {
+  .projects, .header, .header {
     width: 100%;
     height: 65vh;
     padding: 4.125rem calc(var(--content-padding) + 1rem) 3.5rem;

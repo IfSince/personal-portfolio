@@ -12,7 +12,7 @@ export class Quest {
     constructor(formElement, questSteps) {
         this.formElement = formElement;
         this.questSteps = questSteps;
-        this.createProgressPoints();
+        this.progressPoints = this.createProgressPoints();
         this.createButtonEventListeners();
 
         this.updateActiveStep(0, false)
@@ -60,6 +60,14 @@ export class Quest {
         }
         this.questSteps[stepIndex].panel.classList.add("active");
         this.currentStepIndex = stepIndex;
+
+        if (this.currentStepIndex === this.questSteps.length-1) {
+            this.nextBtn.classList.remove("active")
+            this.submitBtn.classList.add("active")
+        } else {
+            this.nextBtn.classList.add("active")
+            this.submitBtn.classList.remove("active")
+        }
     }
 
     /**
@@ -73,14 +81,14 @@ export class Quest {
      * Creates progress points for quest steps
      */
     createProgressPoints() {
-        this.progressPoints = this.questSteps.map((step, stepIndex) => {
-            const element = createDomElement("button", step.description, ["quest__progress-btn"]);
-            element.type = "button";
-            element.title = step.description;
+        const questStepContainer = this.formElement.querySelector('.quest-steps')
+        return this.questSteps.map((step, stepIndex) => {
+            const element = createDomElement("li", step.description, ["quest-steps__link"]);
             element.addEventListener("click", () => this.updateActiveStep(stepIndex));
 
-            this.formElement.querySelector(".quest__progress").appendChild(element);
-            return element;
+            questStepContainer.appendChild(element)
+
+            return element
         })
     }
 
@@ -88,16 +96,10 @@ export class Quest {
      * Creates event listeners for buttons
      */
     createButtonEventListeners() {
-        const prevButtons = this.formElement.querySelectorAll('[data-btn-type="prev"]');
-        const nextButtons = this.formElement.querySelectorAll('[data-btn-type="next"]');
-        const submitButton = this.formElement.querySelector('[data-btn-type="submit"]');
+        this.nextBtn = this.formElement.querySelector('[data-btn-type="next"]');
+        this.submitBtn = this.formElement.querySelector('[data-btn-type="submit"]');
 
-        prevButtons.forEach((btn) => {
-            btn.addEventListener("click", () => this.updateActiveStep(this.currentStepIndex - 1));
-        })
-        nextButtons.forEach((btn) => {
-            btn.addEventListener("click", () => this.updateActiveStep(this.currentStepIndex + 1));
-        });
-        submitButton.addEventListener("click", () => this.submit());
+        this.nextBtn.addEventListener("click", () => this.updateActiveStep(this.currentStepIndex + 1));
+        this.submitBtn.addEventListener("click", () => this.submit());
     }
 }

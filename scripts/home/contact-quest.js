@@ -56,8 +56,9 @@ const personalStepPanel = contactForm.querySelector("#personalStep");
 const addressStepPanel = contactForm.querySelector("#addressStep");
 const messageStepPanel = contactForm.querySelector("#messageStep");
 
+
 export const contactQuestSteps = [
-    new QuestStep(personalFormFields, "Personal", personalStepPanel),
+    new QuestStep(personalFormFields, "Personal*", personalStepPanel),
     new QuestStep(addressFormFields, "Address", addressStepPanel),
-    new QuestStep(messageFormFields, "Message", messageStepPanel)
+    new QuestStep(messageFormFields, "Message*", messageStepPanel)
 ];
