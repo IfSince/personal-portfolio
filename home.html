@@ -9,18 +9,18 @@
   
     <link rel="stylesheet" href="https://use.typekit.net/hbp1ubp.css"> <!-- Adobe Font-->
     <link rel="stylesheet" type="text/css" href="./styles/shared/reset.css">
-    <link rel="stylesheet" href="styles/shared/style.css" />
-    <link rel="stylesheet" href="styles/home.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/shared/style.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/home.css" />
 
-    <script src="scripts/home/fullpage-scroll.js" defer></script>
-    <script src="scripts/home/home.js" type="module" defer></script>
+    <script src="./scripts/home/fullpage-scroll.js" defer></script>
+    <script src="./scripts/home/home.js" type="module" defer></script>
   </head>
   <body>
-    <img class="stars" src="./assets/home/stars.svg" alt="stars">
+    <img class="stars" src="././assets/background/stars.svg" alt="stars">
   
-    <img src="assets/planets/planet_blue.svg" alt="" class="planet planet__blue">
-    <img src="assets/planets/planet_red.svg" alt="" class="planet planet__red">
-    <img src="assets/planets/planet_orange.svg" alt="" class="planet planet__orange">
+    <img src="./assets/background/planet_blue.svg" alt="" class="planet planet__blue">
+    <img src="./assets/background/planet_red.svg" alt="" class="planet planet__red">
+    <img src="./assets/background/planet_orange.svg" alt="" class="planet planet__orange">
   
     <header>
       <a href="./home.html" class="logo">Leon Laade</a>
@@ -33,10 +33,10 @@
       </button>
       <nav>
         <ul class="text-xs-bold">
-          <li><a class="nav-element" href="home.html">Home</a></li>
+          <li><a class="nav-element" href="./home.html">Home</a></li>
           <li><a class="nav-element" href="#">My Portfolio</a></li>
-          <li><a class="nav-element" href="about.html">About Me</a></li>
-          <li><a class="nav-element" href="contact.html">Contact</a></li>
+          <li><a class="nav-element" href="./about.html">About Me</a></li>
+          <li><a class="nav-element" href="./contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -59,10 +59,10 @@
         </div>
         <div class="content">
           <div class="section__content" data-project-slider>
-            <img src="./assets/home/projects/dabbing_astronaut.jpg" alt="" class="projects__slide active">
-            <img src="./assets/home/projects/figuring_out.jpg" alt="" class="projects__slide">
-            <img src="./assets/home/projects/landed.jpg" alt="" class="projects__slide">
-            <img src="./assets/home/projects/peace.jpg" alt="" class="projects__slide">
+            <img src="./assets/home/projects/dabbing_astronaut.jpg" alt="Dabbing Astronaut" class="projects__slide active">
+            <img src="./assets/home/projects/figuring_out.jpg" alt="Figuring out" class="projects__slide">
+            <img src="./assets/home/projects/landed.jpg" alt="Landed" class="projects__slide">
+            <img src="./assets/home/projects/peace.jpg" alt="Peace" class="projects__slide">
             <span class="projects__count">01</span>
             
             <div class="animation-div image__cover"></div>
@@ -75,13 +75,18 @@
         <div class="hero">
           <h5>Learn more</h5>
           <h2>About me</h2>
-          <p>Lorem ipsum dolor sit<br>and contributed to over the last years.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur<br>Aspernatur, consequuntur perferendis quia</p>
           <button class="btn btn-primary"><a href="about.html">Show me more</a></button>
         </div>
         <div class="content">
           <div class="section__content">
             <a href="about.html">
-              <img src="./assets/home/contact.jpg" alt="">
+              <picture>
+                <source srcset="./assets/about-me/about-me.jpg 1500w,
+                              ./assets/about-me/about-me@075x.jpg 1000w,
+                              ./assets/about-me/about-me@05x.jpg 600w">
+                <img src="./assets/about-me/about-me.jpg" alt="About me Image">
+              </picture>
             </a>
             
             <div class="animation-div image__cover"></div>
@@ -101,7 +106,12 @@
         <div class="content">
           <div class="section__content">
             <a href="contact.html">
-              <img src="./assets/home/contact.jpg" alt="">
+              <picture>
+                <source srcset="./assets/home/contact.jpg 1500w,
+                                ./assets/home/contact@075x.jpg 1000w,
+                                ./assets/home/contact@05x.jpg 600w">
+                <img src="./assets/about-me/about-me.jpg" alt="About me Image">
+              </picture>
             </a>
             <div class="animation-div image__cover"></div>
             <div class="animation-div image__cover"></div>

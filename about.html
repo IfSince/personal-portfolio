@@ -34,13 +34,34 @@
   </header>
   
   <div class="wrapper">
-    <img class="planet" src="assets/planets/planet_blue.svg" alt="Background Planet">
-    <img class="stars" src="./assets/home/stars.svg" alt="stars">
+    <img class="planet" src="assets/background/planet_blue.svg" alt="Background Planet">
+    <img class="stars" src="assets/background/stars.svg" alt="stars">
   
     <section class="hero">
-      <div class="hero__image"></div>
-      <div class="hero__image"></div>
-      <div class="hero__image"></div>
+      <div class="hero__image">
+        <picture>
+          <source srcset="assets/about-me/about-me.jpg 1500w,
+                              assets/about-me/about-me@075x.jpg 1000w,
+                              assets/about-me/about-me@05x.jpg 600w">
+          <img src="assets/about-me/about-me.jpg" alt="About me Image">
+        </picture>
+      </div>
+      <div class="hero__image">
+        <picture>
+          <source srcset="assets/about-me/about-me3.jpg 1500w,
+                              assets/about-me/about-me3@075x.jpg 1000w,
+                              assets/about-me/about-me3@05x.jpg 600w">
+          <img src="assets/about-me/about-me2.jpg" alt="About me Image">
+        </picture>
+      </div>
+      <div class="hero__image">
+        <picture>
+          <source srcset="assets/about-me/about-me2.jpg 1500w,
+                              assets/about-me/about-me2@075x.jpg 1000w,
+                              assets/about-me/about-me2@05x.jpg 600w">
+          <img src="assets/about-me/about-me2.jpg" alt="About me Image">
+        </picture>
+      </div>
     </section>
   
     <section class="about-me content-section">
@@ -51,7 +72,11 @@
       </div>
       <div class="about-me__image-container">
         <div class="about-me__image">
-          <img src="./assets/about-me/about-me.jpg" alt="Picture of myself">
+          <picture>
+            <source srcset="./assets/about-me/leonlaade.jpg 1000w,
+                            ./assets/about-me/leonlaade@05x.jpg 400w">
+            <img src="assets/about-me/about-me.jpg" alt="About me Image">
+          </picture>
         </div>
       </div>
     </section>
@@ -61,21 +86,21 @@
       <div class="experience-list">
         <div class="experience-list__card fade-in__bottom">
           <div class="card-image">
-            <img src="assets/about-me/project.svg" alt="Picture of rocket">
+            <img src="assets/about-me/icons/project.svg" alt="Picture of rocket">
           </div>
           <h3>UI/UX Design</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi, ea, eaque ipsam maiores neque nostrum pariatur perspiciatis possimus quis quisquam ratione ut, veniam voluptates.</p>
         </div>
         <div class="experience-list__card fade-in__bottom delay-02">
           <div class="card-image">
-            <img src="assets/about-me/virus3.svg" alt="Picture of rocket">
+            <img src="assets/about-me/icons/virus3.svg" alt="Picture of rocket">
           </div>
           <h3>Development</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, commodi cumque eaque eius eveniet magnam minus natus nobis numquam vel?</p>
         </div>
         <div class="experience-list__card fade-in__bottom delay-04">
           <div class="card-image">
-            <img src="assets/about-me/spy.svg" alt="Picture of rocket">
+            <img src="assets/about-me/icons/spy.svg" alt="Picture of rocket">
           </div>
           <h3>Consulting</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ex fugit illo modi reiciendis rem. Asperiores consectetur eaque error excepturi expedita maxime minus neque nisi odio, quasi quos rem, totam?</p>
