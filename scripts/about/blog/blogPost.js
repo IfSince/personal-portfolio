@@ -43,8 +43,8 @@ class BlogPost extends HTMLElement {
     render() {
         this.shadow.innerHTML = `
         <style>
-          @import "../../styles/shared/style.css";
-          @import "../../styles/about.css";
+          @import "../../../styles/shared/style.css";
+          @import "../../../styles/about.css";
         </style>
         <div class="blog-post">
             <div class="blog-post__image">

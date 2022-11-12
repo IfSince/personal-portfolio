@@ -188,11 +188,15 @@ p {
   transform: scale(0.85) translateX(10%);
   transition: transform 1.6s cubic-bezier(.39,.29,.2,1.01);
   overflow: hidden;
+  cursor: pointer;
+}
+
+.section__content a, .section__content img {
+  width: 100%;
+  height: 100%;
 }
 
 .section__content img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   position: absolute;
 }

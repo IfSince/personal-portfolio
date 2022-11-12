@@ -3,12 +3,14 @@ import {Slider} from '../shared/slider.js';
 
 const starBackground = document.querySelector('.stars');
 const menuBtn = document.querySelector("#menu-icon");
-const projectSliderContainer = document.querySelector('.projects__content');
+const projectSliderContainer = document.querySelector('[data-project-slider]');
 const slides = document.querySelectorAll('.projects__slide');
 
 createMenuEventListener(menuBtn);
 
-new Slider(projectSliderContainer, [...slides])
+const slider = new Slider(projectSliderContainer, [...slides]);
+slider.init();
+
 
 document.body.addEventListener("mousemove", (e) => {
     const multiplier = 0.005;

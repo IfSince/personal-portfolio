@@ -13,7 +13,6 @@ export class Slider {
         this.container = container;
         this.slides = slides;
         this.autoTime = autoTime;
-        this.init();
     }
 
     /**

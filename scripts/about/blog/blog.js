@@ -1,4 +1,4 @@
-import {createDomElement} from '../util/createDomElement.js';
+import {createDomElement} from '../../util/createDomElement.js';
 
 async function loadPosts() {
     const response = await fetch('assets/server.json')
