@@ -8,16 +8,21 @@ const slides = document.querySelectorAll('.projects__slide');
 
 createMenuEventListener(menuBtn);
 
-const slider = new Slider(projectSliderContainer, [...slides]);
+const slider = new Slider(projectSliderContainer, [...slides], null, 1200);
 slider.init();
 
-
+/*===========================================================================================
+        Background Mouseover
+=============================================================================================*/
 document.body.addEventListener("mousemove", (e) => {
     const multiplier = 0.005;
     starBackground.style.setProperty("--x", e.pageX * multiplier + "px");
     starBackground.style.setProperty("--y", e.pageY * multiplier + "px");
 });
 
+/*===========================================================================================
+        Intersection Observer
+=============================================================================================*/
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         const target = entry.target;
@@ -36,3 +41,13 @@ document.querySelectorAll('.hero').forEach((section) => {
     observer.observe(section);
 })
 
+const sliderObserver = new IntersectionObserver(entries => {
+   entries.forEach(entry => {
+       if (entry.isIntersecting) {
+           slider.play();
+       } else {
+           slider.pause();
+       }
+   });
+});
+sliderObserver.observe(projectSliderContainer);

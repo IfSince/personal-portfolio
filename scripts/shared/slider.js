@@ -7,23 +7,27 @@ export class Slider {
      *
      * @param container {HTMLElement}
      * @param slides {Object[]}
-     * @param autoTime {number?}
+     * @param autoTime {number || null}
+     * @param animationOffset {number}
      */
-    constructor(container, slides, autoTime) {
+    constructor(container, slides, autoTime, animationOffset = 0) {
         this.container = container;
         this.slides = slides;
         this.autoTime = autoTime;
+        this.animationOffset = animationOffset;
     }
 
     /**
-     * Initialises Slider-DOM
+     * Initialises Slider-DOM and loads some DOM-Elements
      */
     init() {
-        let activeSlide = this.slides[this.activeSlideIndex];
-        this.slides.forEach(slide => slide.addEventListener("click",() => this.changeSlide(1)));
+        this.slides.forEach(slide => slide.addEventListener('click', () => this.changeSlide(1)));
+        this.activeSlide = this.slides[this.activeSlideIndex];
+        this.slideAnimationImage = this.container.querySelector('[data-slide-animation-image]')
+        this.autoTimeDisplayElement = this.container.querySelector('.slide-time');
+        this.slideCountElement = this.container.querySelector('.slide-count');
 
-        this.play();
-        this.activeSlide = activeSlide;
+        this.updateSlideCount();
     }
 
     /**
@@ -48,7 +52,25 @@ export class Slider {
     }
 
     updateSlide() {
-        this.slides.forEach(slide => slide.classList.remove("active"))
+        this.updateAnimationImage();
+        this.resetAnimationElements();
+        this.updateSlideCount();
+
+        this.slides.forEach(slide => slide.classList.remove('active'))
+        this.activeSlide = this.slides[this.activeSlideIndex];
+        this.activeSlide.classList.add('active');
+    }
+
+    updateSlideCount() {
+        this.slideCountElement.innerHTML = `0${this.activeSlideIndex + 1}`;
+    }
+
+    updateAnimationImage() {
+        this.slideAnimationImage.setAttribute('src', this.activeSlide.getAttribute('src'));
+        this.slideAnimationImage.classList.add('visible');
+    }
+
+    resetAnimationElements() {
         const animationDivs = this.container.querySelectorAll('.image__cover')
         animationDivs.forEach((div) => {
             div.classList.remove('active');
@@ -58,10 +80,8 @@ export class Slider {
             setTimeout(() => {
                 div.classList.add('image__cover');
                 div.classList.add('active');
-            }, 1)
+            }, 10)
         })
-        this.activeSlide = this.slides[this.activeSlideIndex];
-        this.activeSlide.classList.add("active");
     }
 
     /**
@@ -82,6 +102,9 @@ export class Slider {
         if (this.autoTime) {
             clearInterval(this.interval);
             this.interval = null;
+
+            clearInterval(this.timingInterval);
+            this.timingInterval = null;
         }
     }
 
@@ -90,7 +113,16 @@ export class Slider {
      */
     play() {
         if (this.autoTime) {
-            this.interval = setInterval(() => this.changeSlide(1), this.autoTime);
+            setTimeout(() => {
+                let timePassedPercentage = 0;
+                const multiplier = this.autoTime * 0.1;
+                this.interval = setInterval(() => this.changeSlide(1), this.autoTime);
+
+                this.timingInterval = setInterval(() => {
+                    timePassedPercentage += 100 / multiplier;
+                    this.autoTimeDisplayElement.style.setProperty('--time-passed-percentage', `${timePassedPercentage}%`)
+                }, 10);
+            }, this.animationOffset - 500);
         }
     }
 
