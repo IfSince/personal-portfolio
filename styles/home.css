@@ -294,8 +294,9 @@ ul.side-nav {
   position: relative;
   width: 1.625rem;
   border: 0.094rem solid white;
-  background-color: white;
+  background-color: var(--txt-primary);
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .side-nav li.active {

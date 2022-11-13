@@ -1,61 +1,71 @@
-const TIME_OUT = 1800 // It should be the same transition time of the sections
-const body = document.querySelector('body')
-const sectionsQty = document.querySelectorAll('section').length
+import {createDomElement} from '../util/createDomElement.js';
+
+const TIME_OUT = 1800 // Scroll animation time
+const sectionCount = document.querySelectorAll('section').length
 const sideNav = document.querySelector('.side-nav')
-const sideNavEntries = sideNav.querySelectorAll('li')
 
-let startFlag = true
+let sideNavEntries = [];
+let scrollAllowed = true
 let initialScroll = window.scrollY
-let qty = 1
-let main = null
-let next = null
+let currentSlideIndex = 1
 
+function createSideNavEntries(count) {
+    for (let i = 1; i <= count; i++) {
+        const element = createDomElement('li')
+        if (i === 1) element.classList.add('active')
+        element.addEventListener('click', () => scroll(i));
+        sideNav.appendChild(element)
 
-// Listening to scroll event
-window.onscroll = () => {
-    if (startFlag) {
-        const scrollDown = this.scrollY >= initialScroll
-        const scrollLimit = qty >= 1 && qty <= sectionsQty
+        sideNavEntries = [...sideNavEntries, element]
+    }
+}
 
-        // Verify that the scroll does not exceed the number of sections
-        if (scrollLimit) {
-            body.style.overflowY = 'hidden' // Lock el scroll
-
-            if (scrollDown && qty < sectionsQty) {
-                main = document.querySelector(`section.s${qty}`)
-                next = document.querySelector(`section.s${qty + 1}`)
-
-                main.style.transform = 'translateY(-100vh)'
-                next.style.transform = 'translateY(0)'
-
-                qty++
-            } else if (!scrollDown && qty > 1) {
-                main = document.querySelector(`section.s${qty - 1}`)
-                next = document.querySelector(`section.s${qty}`)
-
-                main.style.transform = 'translateY(0)'
-                next.style.transform = 'translateY(100vh)'
-
-                qty--
-            }
-
-            // Side nav
-            sideNavEntries.forEach((entry) => {
-                entry.classList.remove('active');
-            })
-            sideNavEntries[qty-1].classList.add('active');
-        }
-
-        // Wait for the scrolling to finish to reset the values
-        setTimeout(() => {
-            initialScroll = this.scrollY
-            startFlag = true
-            body.style.overflowY = 'scroll' // Unlock scroll
-        }, TIME_OUT)
-
-        startFlag = false
+function updateSlides(nextSlideIndex) {
+    for (let i = 1; i < nextSlideIndex; i++) {
+        const slide = document.querySelector(`section.s${i}`)
+        slide.style.transform = 'translateY(-100vh)';
     }
 
-    // Keep scrollbar in the middle of the viewport
-    window.scroll(0, window.screen.height)
+    for (let i = sectionCount; i > nextSlideIndex; i--) {
+        const slide = document.querySelector(`section.s${i}`)
+        slide.style.transform = 'translateY(100vh)'
+    }
+
+    const current = document.querySelector(`section.s${nextSlideIndex}`)
+    current.style.transform = 'translateY(0)'
 }
+
+function scroll(index = null) {
+    if (scrollAllowed) {
+        const isScrollDirectionDown = window.scrollY >= initialScroll && (index == null || index > currentSlideIndex)
+
+        if (currentSlideIndex >= 1 && currentSlideIndex <= sectionCount) {
+            if (isScrollDirectionDown && currentSlideIndex < sectionCount) {
+                const nextSlideIndex = index || currentSlideIndex + 1
+                updateSlides(nextSlideIndex)
+                currentSlideIndex = nextSlideIndex
+            } else if (!isScrollDirectionDown && currentSlideIndex > 1) {
+                const nextSlideIndex = index || currentSlideIndex - 1
+                updateSlides(nextSlideIndex)
+                currentSlideIndex = nextSlideIndex
+            }
+
+            sideNavEntries.forEach((entry) => entry.classList.remove('active'))
+            sideNavEntries[currentSlideIndex - 1].classList.add('active');
+        }
+
+        // Wait for the scrolling to finish before scrolling again
+        setTimeout(() => {
+            initialScroll = window.scrollY
+            scrollAllowed = true
+        }, TIME_OUT)
+
+        scrollAllowed = false
+    }
+}
+
+// Add scroll event listener
+window.addEventListener('scroll', () => scroll())
+
+// Side nav
+createSideNavEntries(sectionCount)
